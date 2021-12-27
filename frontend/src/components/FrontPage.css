@@ -1,0 +1,40 @@
+body {
+  background: #333;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Google chrome */
+@-webkit-keyframes svg-text-anim {
+  40% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+  60% {
+    stroke-dashoffset: 0;
+    fill: #99a0ff;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: #99a0ff;
+  }
+}
+/* Most browsers */
+@keyframes svg-text-anim {
+  40% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+  60% {
+    stroke-dashoffset: 0;
+    fill: #99a0ff;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: #99a0ff;
+  }
+}
