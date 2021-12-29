@@ -14,7 +14,7 @@
 
 .click-here:hover {
   cursor: pointer;
-  transform: rotate(1turn);
+  transform: scale(1.1);
   -webkit-transition: transform 0.5s ease-in-out;
   filter: brightness(140%);
 }

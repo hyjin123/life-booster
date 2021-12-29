@@ -1,4 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500&family=Roboto:wght@300&display=swap');
+
 .main-container {
   display: flex;
   flex-direction: row;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 300;
+}
+
+.calendar-container {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+.selected-day {
+  width: 25vw;
+  height: 50vh;
+  background-color: #9cb5ff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
