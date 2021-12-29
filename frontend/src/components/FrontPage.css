@@ -1,4 +1,4 @@
-body {
+.front-page {
   background: #333;
   margin: 0;
   height: 100vh;
@@ -8,33 +8,13 @@ body {
   align-items: center;
 }
 
-/* Google chrome */
-@-webkit-keyframes svg-text-anim {
-  40% {
-    stroke-dashoffset: 0;
-    fill: transparent;
-  }
-  60% {
-    stroke-dashoffset: 0;
-    fill: #99a0ff;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    fill: #99a0ff;
-  }
+.click-here {
+  padding-left: 1.5em;
 }
-/* Most browsers */
-@keyframes svg-text-anim {
-  40% {
-    stroke-dashoffset: 0;
-    fill: transparent;
-  }
-  60% {
-    stroke-dashoffset: 0;
-    fill: #99a0ff;
-  }
-  100% {
-    stroke-dashoffset: 0;
-    fill: #99a0ff;
-  }
+
+.click-here:hover {
+  cursor: pointer;
+  transform: rotate(1turn);
+  -webkit-transition: transform 0.5s ease-in-out;
+  filter: brightness(140%);
 }

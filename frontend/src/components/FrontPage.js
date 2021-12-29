@@ -1,26 +1,35 @@
 import "./FrontPage.css";
 import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import anime from "animejs";
 
 function FrontPage() {
+
+  // svg animation using animejs
   useEffect(() => {
     anime({
-      targets: "#animation path",
+      targets: ".animation path",
       strokeDashoffset: [anime.setDashoffset, 0],
       easing: "easeInOutSine",
-      duration: 1000,
+      duration: 700,
       delay: function (el, i) {
-        return i * 250;
+        return i * 100;
       },
       direction: "alternate",
       loop: false,
     });
   }, []);
 
+  // useNavigate to navigate to the home route
+  let navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/home");
+  }
+
   return (
-    <div>
+    <div className="front-page">
       <svg
-        id="animation"
+        className="animation"
         width="914"
         height="112"
         viewBox="0 0 914 112"
@@ -123,12 +132,13 @@ function FrontPage() {
         />
       </svg>
       <svg
-        id="animation"
+        className="animation click-here"
         width="382"
         height="33"
         viewBox="0 0 382 33"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        onClick={handleClick}
       >
         <mask
           id="path-1-outside-1_1_14"
