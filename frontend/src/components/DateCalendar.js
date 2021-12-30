@@ -11,10 +11,6 @@ function DateCalendar(props) {
       <div className="calendar-container">
         <Calendar onChange={setDate} value={date} />
       </div>
-      <p className="text-center">
-        <span>Selected Date:</span>
-        {date.toDateString()}
-      </p>
     </div>
   );
 }
