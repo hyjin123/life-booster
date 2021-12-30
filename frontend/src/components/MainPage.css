@@ -5,6 +5,7 @@
   flex-direction: row;
   font-family: 'Kanit', sans-serif;
   font-weight: 300;
+  text-decoration: none;
 }
 
 .calendar-container {
@@ -14,6 +15,7 @@
 }
 
 .selected-day {
+  color: white;
   width: 25vw;
   height: 50vh;
   background-color: #9cb5ff;
@@ -21,4 +23,33 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 15px 0 0 15px;
+}
+
+.selected-weekday {
+  font-size: 3em;
+  padding-bottom: 1em;
+}
+
+.selected-weekday-number {
+  font-size: 8em;
+  line-height: 0.9em;
+}
+
+.view-button {
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 1);
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 1);
+  padding: 10px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease 0s;
+}
+
+.view-button:hover {
+  background-color: #2EE59D;
+  transform: translateY(-8px);
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  border: none;
 }

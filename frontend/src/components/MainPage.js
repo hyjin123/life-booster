@@ -14,10 +14,10 @@ function MainPage() {
       <div className="calendar-container">
         <div className="selected-day">
         <div>{months[date.getMonth()]}</div>
-          <div>{date.getDate()}</div>
-          <div>{weekdays[date.getDay()]}</div>
+          <div className="selected-weekday-number">{date.getDate()}</div>
+          <div className="selected-weekday">{weekdays[date.getDay()]}</div>
           <div>
-            <button>View Tasks</button>
+            <button className="view-button">View To-Do List</button>
           </div>
         </div>
         <DateCalendar date={date} setDate={setDate} />
