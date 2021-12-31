@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FrontPage from './components/FrontPage';
 import MainPage from './components/MainPage';
+import Register from './components/Register';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<FrontPage />} />
         <Route path="/home" element={<MainPage />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );
