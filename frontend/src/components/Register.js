@@ -1,4 +1,5 @@
 import NavBar from "./NavBar";
+import axios from 'axios';
 import { Form, Button } from "react-bootstrap";
 import './Register.css'
 
@@ -12,7 +13,19 @@ function Register() {
     const lastName = formData.get('last-name');
     const email = formData.get('email');
     const password = formData.get('password');
-    console.log(email);
+    // make an axios request to the backend to save the register data to the db
+    axios.post('/register', {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password
+    })
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
   };
 
   return (

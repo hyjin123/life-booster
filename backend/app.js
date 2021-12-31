@@ -15,6 +15,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
 
+// Back-End Routes
 app.use('/register', registerRouter(db));
 app.use('/login', loginRouter(db));
 
