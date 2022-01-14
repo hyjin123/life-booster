@@ -22,6 +22,11 @@ function Register() {
     })
       .then((res) => {
         console.log(res.data);
+        const token = res.data.accessToken;
+        // save the token to local storage
+        localStorage.setItem("jwtToken", token);
+        // if register is successful, redirect the user to home
+        window.location = "/home"
       })
       .catch((err) => {
         console.log(err);
