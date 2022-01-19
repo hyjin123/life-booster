@@ -15,10 +15,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
 const isUserAuthRouter = require('./routes/isUserAuth');
+const taskRouter = require('./routes/task');
 
 // Back-End Routes
 app.use('/register', registerRouter(db));
 app.use('/login', loginRouter(db));
 app.use('/isUserAuth', isUserAuthRouter(db));
+app.use('/task', taskRouter(db));
 
 module.exports = app;

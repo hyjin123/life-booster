@@ -1,3 +1,4 @@
+import axios from "axios";
 import { React, useState } from "react";
 import { Tabs, Tab, Modal, Button, Form } from "react-bootstrap";
 import "./List.css"
@@ -13,6 +14,18 @@ export default function List(props) {
 
   const handleShow = () => {
     setShow(true);
+  };
+
+  // handle when a user adds a task
+  const handleAdd = () => {
+    console.log("hello")
+    axios.post("/task", {
+      
+    })
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err));
   };
 
   // props
@@ -52,28 +65,22 @@ export default function List(props) {
         </Modal.Header>
         <Modal.Body>Enter your task below:</Modal.Body>
         <Form className="add-task-form">
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
+          <Form.Group className="mb-3" controlId="taskName">
+            <Form.Label>Name</Form.Label>
+            <Form.Control type="email" placeholder="Description" />
           </Form.Group>
 
-          <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
-          </Form.Group>
-          <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="Check me out" />
+          <Form.Group className="mb-3" controlId="taskDetail">
+            <Form.Label>Details</Form.Label>
+            <Form.Control as="textarea" placeholder="Details" rows={3} />
           </Form.Group>
         </Form>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
+          <Button variant="primary" onClick={handleAdd}>
+            Save Task
           </Button>
         </Modal.Footer>
       </Modal>
