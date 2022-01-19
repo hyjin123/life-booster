@@ -80,7 +80,14 @@ function MainPage(props) {
           </div>
         )}
         {listOn && (
-          <List />
+          <div className="todo-container">
+            <List
+              date={date}
+              setListOn={setListOn}
+              months={months}
+              weekdays={weekdays}
+            />
+          </div>
         )}
       </div>
     </div>
