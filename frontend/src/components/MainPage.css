@@ -15,6 +15,7 @@ body {
 .calendar-container {
   display: flex;
   flex-direction: row;
+  margin-bottom: auto;
 }
 
 .selected-day {
@@ -67,4 +68,5 @@ body {
 
 .banner {
   font-size: 3em;
+  margin-bottom: auto;
 }

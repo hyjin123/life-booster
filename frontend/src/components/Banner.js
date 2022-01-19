@@ -6,7 +6,7 @@ export default function Banner(props) {
 
   return (
   <div className="banner">
-    You can do it! {firstName} {lastName}
+    {firstName} {lastName}'s To-Do-List
   </div>
   )
 }

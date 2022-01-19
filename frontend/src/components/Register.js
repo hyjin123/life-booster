@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Form, Button } from "react-bootstrap";
 import './Register.css'
 
-function Register() {
+function Register(props) {
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -35,7 +35,7 @@ function Register() {
 
   return (
     <div className="register-container">
-      <NavBar />
+      <NavBar userId={props.userId} />
       <div className="form-container">
         <Form onSubmit={onSubmit}>
           <Form.Group className="mb-3">

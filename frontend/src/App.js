@@ -18,8 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element={<FrontPage />} />
         <Route path="/home" element={<MainPage userId={userId} setUserId={setUserId} firstName={firstName} setFirstName={setFirstName} lastName={lastName} setLastName={setLastName} />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register userId={userId} />} />
+        <Route path="/login" element={<Login userId={userId} />} />
       </Routes>
     </BrowserRouter>
   );

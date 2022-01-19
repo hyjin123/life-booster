@@ -1,13 +1,26 @@
 import NavBar from "./NavBar";
 import { Form, Button } from "react-bootstrap";
 import './Register.css'
+import axios from "axios";
 
-function Login() {
+function Login(props) {
+
+  const handleLogin = (event) => {
+    event.preventDefault();
+    axios.post('/login', {
+
+    })
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err => console.log(err));
+  };
+
   return (
     <div className="register-container">
-      <NavBar />
+      <NavBar userId={props.userId} />
       <div className="form-container">
-        <Form>
+        <Form onSubmit={handleLogin} >
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control type="email" placeholder="Enter email" />

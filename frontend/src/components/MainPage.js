@@ -57,7 +57,7 @@ function MainPage(props) {
 
   return (
     <div className="main-container">
-      <NavBar />
+      <NavBar userId={userId} />
       <div className="second-container">
         <Banner firstName={firstName} lastName={lastName}/>
         <div className="calendar-container">
