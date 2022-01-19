@@ -8,6 +8,8 @@ function NavBar(props) {
     event.preventDefault();
     // reset the token to an empty string
     localStorage.setItem('jwtToken', '', { maxAge: 1 })
+    // redirect to home page
+    window.location = "/home";
   }
   
   return (

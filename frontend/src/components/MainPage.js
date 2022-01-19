@@ -49,6 +49,7 @@ function MainPage(props) {
         const user = res.data.user;
         // set states based on logged in user information
         setUserId(user.id);
+        console.log(user);
         setFirstName(user.first_name);
         setLastName(user.last_name);
       })
