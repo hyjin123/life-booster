@@ -2,7 +2,7 @@ import "./NavBar.css";
 import { Nav } from "react-bootstrap";
 import { FaHome, FaPencilAlt, FaLockOpen } from 'react-icons/fa';
 
-function NavBar() {
+function NavBar(props) {
   return (
     <div className="position-relative">
       <Nav defaultActiveKey="/home" className="flex-column nav-container">
@@ -22,7 +22,7 @@ function NavBar() {
           Login
         </Nav.Link>
         <Nav.Link className="nav" eventKey="disabled" disabled>
-          Disabled
+          Welcome!
         </Nav.Link>
       </Nav>
     </div>

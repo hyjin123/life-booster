@@ -10,12 +10,14 @@ import Login from './components/Login';
 function App() {
 
   const [userId, setUserId] = useState(0);
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<FrontPage />} />
-        <Route path="/home" element={<MainPage userId={userId} setUserId={setUserId} />} />
+        <Route path="/home" element={<MainPage userId={userId} setUserId={setUserId} firstName={firstName} setFirstName={setFirstName} lastName={lastName} setLastName={setLastName} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Routes>

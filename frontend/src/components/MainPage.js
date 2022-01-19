@@ -3,10 +3,12 @@ import NavBar from "./NavBar";
 import DateCalendar from "./DateCalendar";
 import "./MainPage.css";
 import axios from "axios";
+import Banner from "./Banner";
 
 function MainPage(props) {
   const [date, setDate] = useState(new Date());
-  const { userId, setUserId } = props;
+  const { userId, setUserId, firstName, lastName, setFirstName, setLastName } =
+    props;
   const weekdays = [
     "Sunday",
     "Monday",
@@ -45,7 +47,10 @@ function MainPage(props) {
       })
       .then((res) => {
         const user = res.data.user;
-        setUserId(user.id)
+        // set states based on logged in user information
+        setUserId(user.id);
+        setFirstName(user.first_name);
+        setLastName(user.last_name);
       })
       .catch((err) => console.log(err));
   }, [userId]);
@@ -53,18 +58,21 @@ function MainPage(props) {
   return (
     <div className="main-container">
       <NavBar />
-      <div className="calendar-container">
-        <div className="selected-day">
-          <div>{months[date.getMonth()]}</div>
-          <div className="selected-weekday-number">{date.getDate()}</div>
-          <div className="selected-weekday">{weekdays[date.getDay()]}</div>
-          <div className="view-button-div">
-            <button onClick={handleClick} className="view-button">
-              View To-Do List
-            </button>
+      <div className="second-container">
+        <Banner firstName={firstName} lastName={lastName}/>
+        <div className="calendar-container">
+          <div className="selected-day">
+            <div>{months[date.getMonth()]}</div>
+            <div className="selected-weekday-number">{date.getDate()}</div>
+            <div className="selected-weekday">{weekdays[date.getDay()]}</div>
+            <div className="view-button-div">
+              <button onClick={handleClick} className="view-button">
+                View To-Do List
+              </button>
+            </div>
           </div>
+          <DateCalendar date={date} setDate={setDate} />
         </div>
-        <DateCalendar date={date} setDate={setDate} />
       </div>
     </div>
   );
