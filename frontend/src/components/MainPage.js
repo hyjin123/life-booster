@@ -4,9 +4,12 @@ import DateCalendar from "./DateCalendar";
 import "./MainPage.css";
 import axios from "axios";
 import Banner from "./Banner";
+import List from "./List";
 
 function MainPage(props) {
   const [date, setDate] = useState(new Date());
+  const [listOn, setListOn] = useState(false);
+
   const { userId, setUserId, firstName, lastName, setFirstName, setLastName } =
     props;
   const weekdays = [
@@ -34,7 +37,8 @@ function MainPage(props) {
   ];
 
   const handleClick = () => {
-    console.log("hello");
+    // after clicking on "view to do list", render the list by changing the listOn state
+    setListOn(true);
   };
 
   // get the jwt token from local storage if the user is logged in and has a token
@@ -49,7 +53,6 @@ function MainPage(props) {
         const user = res.data.user;
         // set states based on logged in user information
         setUserId(user.id);
-        console.log(user);
         setFirstName(user.first_name);
         setLastName(user.last_name);
       })
@@ -60,20 +63,25 @@ function MainPage(props) {
     <div className="main-container">
       <NavBar userId={userId} />
       <div className="second-container">
-        <Banner firstName={firstName} lastName={lastName}/>
-        <div className="calendar-container">
-          <div className="selected-day">
-            <div>{months[date.getMonth()]}</div>
-            <div className="selected-weekday-number">{date.getDate()}</div>
-            <div className="selected-weekday">{weekdays[date.getDay()]}</div>
-            <div className="view-button-div">
-              <button onClick={handleClick} className="view-button">
-                View To-Do List
-              </button>
+        <Banner firstName={firstName} lastName={lastName} />
+        {!listOn && (
+          <div className="calendar-container">
+            <div className="selected-day">
+              <div>{months[date.getMonth()]}</div>
+              <div className="selected-weekday-number">{date.getDate()}</div>
+              <div className="selected-weekday">{weekdays[date.getDay()]}</div>
+              <div className="view-button-div">
+                <button onClick={handleClick} className="view-button">
+                  View To-Do List
+                </button>
+              </div>
             </div>
+            <DateCalendar date={date} setDate={setDate} />
           </div>
-          <DateCalendar date={date} setDate={setDate} />
-        </div>
+        )}
+        {listOn && (
+          <List />
+        )}
       </div>
     </div>
   );

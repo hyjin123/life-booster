@@ -6,6 +6,7 @@ import FrontPage from './components/FrontPage';
 import MainPage from './components/MainPage';
 import Register from './components/Register';
 import Login from './components/Login';
+import List from './components/List';
 
 function App() {
 

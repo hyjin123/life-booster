@@ -8,7 +8,7 @@ function NavBar(props) {
     event.preventDefault();
     // reset the token to an empty string
     localStorage.setItem('jwtToken', '', { maxAge: 1 })
-    // redirect to home page
+    // redirect to home page after logout
     window.location = "/home";
   }
   
