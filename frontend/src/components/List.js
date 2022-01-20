@@ -1,7 +1,7 @@
 import axios from "axios";
 import { React, useState } from "react";
 import { Tabs, Tab, Modal, Button, Form } from "react-bootstrap";
-import "./List.css"
+import "./List.css";
 
 export default function List(props) {
   // state for the add task popup
@@ -16,16 +16,21 @@ export default function List(props) {
     setShow(true);
   };
 
-  // handle when a user adds a task
-  const handleAdd = () => {
-    console.log("hello")
-    axios.post("/task", {
-      
-    })
-      .then(res => {
-        console.log(res.data);
+  // handles when a user adds a task
+  const handleAdd = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    console.log(data.get("task-name"));
+    axios
+      .post("/task", {
+        taskName: data.get("task-name"),
+        taskDetail: data.get("task-detail"),
       })
-      .catch(err => console.log(err));
+      .then((res) => {
+        console.log(res.data);
+        setShow(false);
+      })
+      .catch((err) => console.log(err));
   };
 
   // props
@@ -64,25 +69,43 @@ export default function List(props) {
           <Modal.Title>Add a Task</Modal.Title>
         </Modal.Header>
         <Modal.Body>Enter your task below:</Modal.Body>
-        <Form className="add-task-form">
+        <Form className="add-task-form" onSubmit={handleAdd}>
           <Form.Group className="mb-3" controlId="taskName">
             <Form.Label>Name</Form.Label>
-            <Form.Control type="email" placeholder="Description" />
+            <Form.Control
+              type="text"
+              name="task-name"
+              placeholder="Description"
+            />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="taskDetail">
             <Form.Label>Details</Form.Label>
-            <Form.Control as="textarea" placeholder="Details" rows={3} />
+            <Form.Control
+              as="textarea"
+              name="task-detail"
+              placeholder="Details"
+              rows={3}
+            />
           </Form.Group>
+          <Form.Select aria-label="Default select example">
+            <option>Status</option>
+            <option value="not-completed">Not Completed</option>
+            <option value="in-progress">In Progress</option>
+            <option value="completed">Completed</option>
+          </Form.Select>
+          <Form.Group className="mb-3" controlId="formBasicCheckbox">
+            <Form.Check type="checkbox" label="High Priority" />
+          </Form.Group>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose} type="submit">
+              Save Task
+            </Button>
+          </Modal.Footer>
         </Form>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleAdd}>
-            Save Task
-          </Button>
-        </Modal.Footer>
       </Modal>
     </div>
   );
