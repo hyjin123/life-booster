@@ -7,6 +7,7 @@ module.exports = (db) => {
     const taskName = req.body.taskName;
     const taskDetail = req.body.taskDetail;
     const taskStatus = req.body.taskStatus.toLowerCase();
+    const taskType = req.body.taskType;
     let taskPriority = null;
     // if the task priority is on, then assign it true
     if (req.body.taskPriority === "on") {

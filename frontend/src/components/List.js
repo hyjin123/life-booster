@@ -22,8 +22,10 @@ export default function List(props) {
     const data = new FormData(event.currentTarget);
     axios
       .post("/task", {
+        userId: props.userId,
         taskName: data.get("task-name"),
         taskDetail: data.get("task-detail"),
+        taskType: data.get("task-type"),
         taskStatus: data.get("task-status"),
         taskPriority: data.get("task-priority"),
       })
@@ -89,6 +91,17 @@ export default function List(props) {
               rows={3}
             />
           </Form.Group>
+          <FloatingLabel controlId="floatingSelect" label="Type">
+            <Form.Select name="task-type" aria-label="Type">
+              <option value="general">General</option>
+              <option value="errand">Errand</option>
+              <option value="household-chore">Household Chore</option>
+              <option value="meal">Meal</option>
+              <option value="leisure">Leisure</option>
+              <option value="personal">Personal</option>
+              <option value="work">Work</option>
+            </Form.Select>
+          </FloatingLabel>
           <FloatingLabel controlId="floatingSelect" label="Status">
             <Form.Select name="task-status" aria-label="Default select example">
               <option value="not-completed">Not Completed</option>
@@ -96,6 +109,7 @@ export default function List(props) {
               <option value="completed">Completed</option>
             </Form.Select>
           </FloatingLabel>
+
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
             <Form.Check
               name="task-priority"
