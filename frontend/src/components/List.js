@@ -1,7 +1,11 @@
 import axios from "axios";
 import { React, useState } from "react";
-import { Tabs, Tab, Modal, Button, Form, FloatingLabel } from "react-bootstrap";
+import { Tabs, Tab, Modal, Button, Form, FloatingLabel, Container } from "react-bootstrap";
 import "./List.css";
+import AllTasks from "./AllTasks";
+import UncompletedTasks from "./UncompletedTasks";
+import InProgressTasks from "./InProgressTasks";
+import CompletedTasks from "./CompletedTasks";
 
 export default function List(props) {
   // state for the add task popup
@@ -62,10 +66,18 @@ export default function List(props) {
         id="uncontrolled-tab-example"
         className="mb-3"
       >
-        <Tab eventKey="home" title="All Tasks"></Tab>
-        <Tab eventKey="uncompleted" title="Uncompleted"></Tab>
-        <Tab eventKey="progress" title="In-progress"></Tab>
-        <Tab eventKey="completed" title="Completed"></Tab>
+        <Tab eventKey="home" title="All Tasks">
+          <AllTasks />
+        </Tab>
+        <Tab eventKey="uncompleted" title="Uncompleted">
+          <UncompletedTasks />
+        </Tab>
+        <Tab eventKey="progress" title="In-progress">
+          <InProgressTasks />
+        </Tab>
+        <Tab eventKey="completed" title="Completed">
+          <CompletedTasks />
+        </Tab>
       </Tabs>
 
       <Modal show={show} onHide={handleClose}>
