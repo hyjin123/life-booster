@@ -38,5 +38,17 @@ module.exports = (db) => {
       .catch((err) => console.log(err));
   });
 
+  router.get("/all", function (req, res) {
+    // save the query into a date variable, 2021-01-20
+    const fullDate = req.query["date"];
+    const date = new Date(fullDate);
+    // retrive all tasks from this date from the db, NEED TO SET THE USERID AS WELL OR ELSE ALL TASK WILL BE HERE
+    db.query(`SELECT * FROM tasks WHERE date = $1`, [date])
+      .then(data => {
+        console.log(data.rows)
+      })
+      .catch(err => console.log(err))
+  });
+  
   return router;
 };

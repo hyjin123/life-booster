@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./AllTasks.css"
+import axios from "axios";
 
 export default function AllTasks(props) {
+
+  // props
+  const { date } = props;
+
+  // make a backend request to retrieve all the tasks for the chosen date
+  useEffect(() => {
+    axios.get(`/task/all?date=${date}`)
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err))
+  }, [])
+
   return (
     <div className="table-container">
       <div className="table-header">

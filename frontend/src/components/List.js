@@ -50,7 +50,7 @@ export default function List(props) {
   };
 
   return (
-    <div>
+    <div className="task-container">
       <h1>
         {months[date.getMonth()]} {date.getDate()}, {date.getFullYear()},{" "}
         {weekdays[date.getDay()]}
@@ -67,16 +67,16 @@ export default function List(props) {
         className="mb-3"
       >
         <Tab eventKey="home" title="All Tasks">
-          <AllTasks />
+          <AllTasks date={props.date} />
         </Tab>
         <Tab eventKey="uncompleted" title="Uncompleted">
-          <UncompletedTasks />
+          <UncompletedTasks date={props.date} />
         </Tab>
         <Tab eventKey="progress" title="In-progress">
-          <InProgressTasks />
+          <InProgressTasks date={props.date} />
         </Tab>
         <Tab eventKey="completed" title="Completed">
-          <CompletedTasks />
+          <CompletedTasks date={props.date} />
         </Tab>
       </Tabs>
 
