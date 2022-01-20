@@ -23,6 +23,7 @@ export default function List(props) {
     axios
       .post("/task", {
         userId: props.userId,
+        date: props.date,
         taskName: data.get("task-name"),
         taskDetail: data.get("task-detail"),
         taskType: data.get("task-type"),
