@@ -82,6 +82,7 @@ function MainPage(props) {
         {listOn && (
           <div className="todo-container">
             <List
+              userId={userId}
               date={date}
               setListOn={setListOn}
               months={months}

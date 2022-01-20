@@ -5,7 +5,16 @@ module.exports = (db) => {
   router.post('/', function(req, res) { 
     console.log(req.body);
     const taskName = req.body.taskName;
-    const takeDetail = req.body.taskDetail;
+    const taskDetail = req.body.taskDetail;
+    const taskStatus = req.body.taskStatus.toLowerCase();
+    let taskPriority = null;
+    // if the task priority is on, then assign it true
+    if (req.body.taskPriority === "on") {
+      taskPriority = true;
+    } else {
+      taskPriority = false;
+    }
+    console.log(taskStatus, taskPriority);
     db.query(`INSERT INTO tasks (user_id, name, description, type, date, status, high_priority)`)
   });
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { React, useState } from "react";
-import { Tabs, Tab, Modal, Button, Form } from "react-bootstrap";
+import { Tabs, Tab, Modal, Button, Form, FloatingLabel } from "react-bootstrap";
 import "./List.css";
 
 export default function List(props) {
@@ -20,11 +20,12 @@ export default function List(props) {
   const handleAdd = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log(data.get("task-name"));
     axios
       .post("/task", {
         taskName: data.get("task-name"),
         taskDetail: data.get("task-detail"),
+        taskStatus: data.get("task-status"),
+        taskPriority: data.get("task-priority"),
       })
       .then((res) => {
         console.log(res.data);
@@ -71,7 +72,7 @@ export default function List(props) {
         <Modal.Body>Enter your task below:</Modal.Body>
         <Form className="add-task-form" onSubmit={handleAdd}>
           <Form.Group className="mb-3" controlId="taskName">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Enter Name</Form.Label>
             <Form.Control
               type="text"
               name="task-name"
@@ -80,7 +81,7 @@ export default function List(props) {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="taskDetail">
-            <Form.Label>Details</Form.Label>
+            <Form.Label>Enter Details</Form.Label>
             <Form.Control
               as="textarea"
               name="task-detail"
@@ -88,14 +89,19 @@ export default function List(props) {
               rows={3}
             />
           </Form.Group>
-          <Form.Select aria-label="Default select example">
-            <option>Status</option>
-            <option value="not-completed">Not Completed</option>
-            <option value="in-progress">In Progress</option>
-            <option value="completed">Completed</option>
-          </Form.Select>
+          <FloatingLabel controlId="floatingSelect" label="Status">
+            <Form.Select name="task-status" aria-label="Default select example">
+              <option value="not-completed">Not Completed</option>
+              <option value="in-progress">In Progress</option>
+              <option value="completed">Completed</option>
+            </Form.Select>
+          </FloatingLabel>
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check type="checkbox" label="High Priority" />
+            <Form.Check
+              name="task-priority"
+              type="checkbox"
+              label="High Priority"
+            />
           </Form.Group>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
