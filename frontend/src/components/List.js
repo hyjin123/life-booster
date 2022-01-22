@@ -67,16 +67,16 @@ export default function List(props) {
         className="mb-3"
       >
         <Tab eventKey="home" title="All Tasks">
-          <AllTasks date={props.date} />
+          <AllTasks date={props.date} userId={props.userId} />
         </Tab>
         <Tab eventKey="uncompleted" title="Uncompleted">
-          <UncompletedTasks date={props.date} />
+          <UncompletedTasks date={props.date} userId={props.userId} />
         </Tab>
         <Tab eventKey="progress" title="In-progress">
-          <InProgressTasks date={props.date} />
+          <InProgressTasks date={props.date} userId={props.userId} />
         </Tab>
         <Tab eventKey="completed" title="Completed">
-          <CompletedTasks date={props.date} />
+          <CompletedTasks date={props.date} userId={props.userId} />
         </Tab>
       </Tabs>
 

@@ -5,11 +5,16 @@ import axios from "axios";
 export default function AllTasks(props) {
 
   // props
-  const { date } = props;
+  const { date, userId } = props;
 
   // make a backend request to retrieve all the tasks for the chosen date
   useEffect(() => {
-    axios.get(`/task/all?date=${date}`)
+    axios.get(`/task/all`, {
+      params: {
+        date: date,
+        userId: userId,
+      }
+    })
       .then(res => {
         console.log(res.data);
       })
