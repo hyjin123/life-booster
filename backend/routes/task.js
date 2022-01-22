@@ -47,7 +47,7 @@ module.exports = (db) => {
     // retrive all tasks from this date from the db, NEED TO SET THE USERID AS WELL OR ELSE ALL TASK WILL BE HERE
     db.query(`SELECT * FROM tasks WHERE date = $1 AND user_id = $2`, queryParams)
       .then(data => {
-        console.log(data.rows)
+        res.json(data.rows);
       })
       .catch(err => console.log(err))
   });

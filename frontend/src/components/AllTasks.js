@@ -1,25 +1,42 @@
-import React, { useEffect } from "react";
-import "./AllTasks.css"
+import React, { useEffect, useState } from "react";
+import "./AllTasks.css";
 import axios from "axios";
 
 export default function AllTasks(props) {
+  // hooks for all tasks
+  const [allTasks, setAllTasks] = useState([]);
 
   // props
   const { date, userId } = props;
 
+  // map through all the tasks
+  const listItems = allTasks.map((task) => {
+    return (
+      <div className="table-row">
+        <div>{task.type}</div>
+        <div>{task.name}</div>
+        <div>{task.description}</div>
+        <div>{task.status}</div>
+        <button>Edit</button>
+        <button>Delete</button>
+      </div>
+    );
+  });
   // make a backend request to retrieve all the tasks for the chosen date
   useEffect(() => {
-    axios.get(`/task/all`, {
-      params: {
-        date: date,
-        userId: userId,
-      }
-    })
-      .then(res => {
-        console.log(res.data);
+    axios
+      .get(`/task/all`, {
+        params: {
+          date: date,
+          userId: userId,
+        },
       })
-      .catch(err => console.log(err))
-  }, [])
+      .then((res) => {
+        console.log(res.data);
+        setAllTasks(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="table-container">
