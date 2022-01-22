@@ -29,7 +29,7 @@ module.exports = (db) => {
     ];
     db.query(
       `INSERT INTO tasks (user_id, name, description, type, date, status, high_priority) 
-    VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING name;`,
+    VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id;`,
       task
     )
       .then((data) => {

@@ -9,6 +9,7 @@ import List from "./List";
 function MainPage(props) {
   const [date, setDate] = useState(new Date());
   const [listOn, setListOn] = useState(false);
+  const [show, setShow] = useState(false);
 
   const { userId, setUserId, firstName, lastName, setFirstName, setLastName } =
     props;
@@ -57,7 +58,7 @@ function MainPage(props) {
         setLastName(user.last_name);
       })
       .catch((err) => console.log(err));
-  }, [userId]);
+  }, [userId, show]);
 
   return (
     <div className="main-container">
@@ -87,6 +88,8 @@ function MainPage(props) {
               setListOn={setListOn}
               months={months}
               weekdays={weekdays}
+              show={show}
+              setShow={setShow}
             />
           </div>
         )}

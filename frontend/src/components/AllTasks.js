@@ -7,7 +7,7 @@ export default function AllTasks(props) {
   const [allTasks, setAllTasks] = useState([]);
 
   // props
-  const { date, userId } = props;
+  const { date, userId, addedTask } = props;
 
   // map through all the tasks
   const listItems = allTasks.map((task) => {
@@ -40,7 +40,7 @@ export default function AllTasks(props) {
         setAllTasks(res.data);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [addedTask]);
 
   return (
     <div className="table-container">
@@ -56,13 +56,3 @@ export default function AllTasks(props) {
     </div>
   );
 }
-
-// icon/type
-// name
-// details
-// status
-// delete button
-// completed button
-// in progress button
-// not completed button
-// edit button

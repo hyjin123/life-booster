@@ -8,8 +8,11 @@ import InProgressTasks from "./InProgressTasks";
 import CompletedTasks from "./CompletedTasks";
 
 export default function List(props) {
-  // state for the add task popup
-  const [show, setShow] = useState(false);
+  // state that allows the all task list to re-render if this changes (whenever new task is added)
+  const [addedTask, setAddedTask] = useState(0);
+
+  // props
+  const {show, setShow} = props;
 
   // handling the open and close of the add task pop up
   const handleClose = () => {
@@ -36,6 +39,7 @@ export default function List(props) {
       })
       .then((res) => {
         console.log(res.data);
+        setAddedTask(res.data.id);
         setShow(false);
       })
       .catch((err) => console.log(err));
@@ -67,7 +71,7 @@ export default function List(props) {
         className="mb-3"
       >
         <Tab eventKey="home" title="All Tasks">
-          <AllTasks date={props.date} userId={props.userId} />
+          <AllTasks date={props.date} userId={props.userId} addedTask={addedTask} />
         </Tab>
         <Tab eventKey="uncompleted" title="Uncompleted">
           <UncompletedTasks date={props.date} userId={props.userId} />
