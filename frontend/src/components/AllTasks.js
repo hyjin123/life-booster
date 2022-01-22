@@ -1,13 +1,28 @@
 import React, { useEffect, useState } from "react";
 import "./AllTasks.css";
 import axios from "axios";
+import { Modal, Button } from "react-bootstrap";
 
 export default function AllTasks(props) {
   // hooks for all tasks
   const [allTasks, setAllTasks] = useState([]);
 
   // props
-  const { date, userId, addedTask } = props;
+  const {
+    date,
+    userId,
+    addedTask,
+    setDeletedTask,
+    handleShow,
+    handleClose,
+    show,
+  } = props;
+
+  // when the user deletes a task
+  const handleDelete = () => {
+    console.log("hello");
+    // make a post axios request to remove the task from the database
+  };
 
   // map through all the tasks
   const listItems = allTasks.map((task) => {
@@ -21,8 +36,22 @@ export default function AllTasks(props) {
           <button>Edit</button>
         </div>
         <div>
-          <button>Delete</button>
+          <button onClick={handleDelete}>Delete</button>
         </div>
+        <Modal show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Modal heading</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+              Save Changes
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   });

@@ -10,6 +10,7 @@ import CompletedTasks from "./CompletedTasks";
 export default function List(props) {
   // state that allows the all task list to re-render if this changes (whenever new task is added)
   const [addedTask, setAddedTask] = useState(0);
+  const [deletedTask, setDeletedTask] = useState(0);
 
   // props
   const {show, setShow} = props;
@@ -71,7 +72,7 @@ export default function List(props) {
         className="mb-3"
       >
         <Tab eventKey="home" title="All Tasks">
-          <AllTasks date={props.date} userId={props.userId} addedTask={addedTask} />
+          <AllTasks date={props.date} userId={props.userId} addedTask={addedTask} show={show} setDeletedTask={setDeletedTask} handleShow={handleShow} handleClose={handleClose} />
         </Tab>
         <Tab eventKey="uncompleted" title="Uncompleted">
           <UncompletedTasks date={props.date} userId={props.userId} />
