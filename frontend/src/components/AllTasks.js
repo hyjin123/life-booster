@@ -17,8 +17,12 @@ export default function AllTasks(props) {
         <div>{task.name}</div>
         <div>{task.description}</div>
         <div>{task.status}</div>
-        <button>Edit</button>
-        <button>Delete</button>
+        <div>
+          <button>Edit</button>
+        </div>
+        <div>
+          <button>Delete</button>
+        </div>
       </div>
     );
   });
@@ -48,9 +52,7 @@ export default function AllTasks(props) {
         <div>Edit</div>
         <div>Delete</div>
       </div>
-      <div className="table-row">
-        <div>hello</div>
-      </div>
+      {listItems}
     </div>
   );
 }
