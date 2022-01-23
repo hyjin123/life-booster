@@ -53,7 +53,13 @@ module.exports = (db) => {
   });
   
   router.post("/delete", function (req, res) {
-
+    const taskId = req.body.id;
+    // make a query to remove the task from the task table (database)
+    db.query(`DELETE FROM tasks WHERE id = $1 RETURNING id;`, [taskId])
+      .then(data => {
+        res.json(data.rows[0])
+      })
+      .catch(err => console.log(err))
   });
 
   return router;

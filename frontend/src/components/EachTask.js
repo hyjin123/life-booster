@@ -13,6 +13,7 @@ export default function EachTask(props) {
     name,
     description,
     status,
+    setDeletedTask
   } = props;
 
   // handles popup events, open and close
@@ -23,12 +24,13 @@ export default function EachTask(props) {
   const handleDelete = () => {
     // close the popup
     setDeleteShow(false);
-    // make a post axios request to remove the selected (1) task from the database
+    // make a post axios request to remove the selected (1) task from the database, send the task id as a body
     axios.post("/task/delete", {
       id
     })
       .then(res => {
-        console.log(res.data);
+        // set deletedTask hook to the id so that the all task table re-renders whenever user deletes a task
+        setDeletedTask(res.data.id);
       })
       .catch(err => console.log(err))
   };
