@@ -72,7 +72,7 @@ export default function List(props) {
         className="mb-3"
       >
         <Tab eventKey="home" title="All Tasks">
-          <AllTasks date={props.date} userId={props.userId} addedTask={addedTask} show={show} setDeletedTask={setDeletedTask} handleShow={handleShow} handleClose={handleClose} />
+          <AllTasks date={props.date} userId={props.userId} addedTask={addedTask} setDeletedTask={setDeletedTask} />
         </Tab>
         <Tab eventKey="uncompleted" title="Uncompleted">
           <UncompletedTasks date={props.date} userId={props.userId} />

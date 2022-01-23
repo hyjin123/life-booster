@@ -6,17 +6,13 @@ import { Modal, Button } from "react-bootstrap";
 export default function AllTasks(props) {
   // hooks for all tasks
   const [allTasks, setAllTasks] = useState([]);
+  const [show, setShow] = useState(false);
 
   // props
-  const {
-    date,
-    userId,
-    addedTask,
-    setDeletedTask,
-    handleShow,
-    handleClose,
-    show,
-  } = props;
+  const { date, userId, addedTask, setDeletedTask } = props;
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   // when the user deletes a task
   const handleDelete = () => {
@@ -36,9 +32,15 @@ export default function AllTasks(props) {
           <button>Edit</button>
         </div>
         <div>
-          <button onClick={handleDelete}>Delete</button>
+          <button onClick={handleShow}>Delete</button>
         </div>
-        <Modal show={show} onHide={handleClose}>
+        <Modal
+          show={show}
+          onHide={handleClose}
+          aria-labelledby="contained-modal-title-vcenter"
+          centered
+          className="delete-popup"
+        >
           <Modal.Header closeButton>
             <Modal.Title>Modal heading</Modal.Title>
           </Modal.Header>

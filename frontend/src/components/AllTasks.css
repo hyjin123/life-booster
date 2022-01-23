@@ -13,3 +13,7 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
 }
+
+.modal-backdrop {
+  background-color: rgba(0,0,0,.2);
+}
