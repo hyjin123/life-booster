@@ -52,5 +52,9 @@ module.exports = (db) => {
       .catch(err => console.log(err))
   });
   
+  router.post("/delete", function (req, res) {
+
+  });
+
   return router;
 };

@@ -1,29 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import axios from "axios";
 
 export default function EachTask(props) {
+  // hooks
+  const [deleteShow, setDeleteShow] = useState(false);
+
   // destructure props
   const {
-    key,
+    id,
     type,
     name,
     description,
     status,
-    handleShow,
-    handleClose,
-    show,
-    setShow,
   } = props;
+
+  // handles popup events, open and close
+  const handleClose = () => setDeleteShow(false);
+  const handleShow = () => setDeleteShow(true);
 
   // when the user deletes a task
   const handleDelete = () => {
-    console.log("hello");
     // close the popup
-    setShow(false);
-    // make a post axios request to remove the task from the database
+    setDeleteShow(false);
+    // make a post axios request to remove the selected (1) task from the database
+    axios.post("/task/delete", {
+      id
+    })
+      .then(res => {
+        console.log(res.data);
+      })
+      .catch(err => console.log(err))
   };
-  
+
   return (
     <div className="table-row">
       <div>{type}</div>
@@ -37,7 +46,7 @@ export default function EachTask(props) {
         <button onClick={handleShow}>Delete</button>
       </div>
       <Modal
-        show={show}
+        show={deleteShow}
         onHide={handleClose}
         centered
         animation={false}

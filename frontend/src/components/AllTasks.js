@@ -7,28 +7,20 @@ import EachTask from "./EachTask";
 export default function AllTasks(props) {
   // hooks for all tasks
   const [allTasks, setAllTasks] = useState([]);
-  const [show, setShow] = useState(false);
 
   // props
   const { date, userId, addedTask, setDeletedTask } = props;
-
-  // handles popup events, open and close
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   // map through all the tasks
   const listItems = allTasks.map((task) => {
     return (
       <EachTask
         key={task.id}
+        id={task.id}
         type={task.type}
         name={task.name}
         description={task.description}
         status={task.status}
-        show={show}
-        setShow={setShow}
-        handleClose={handleClose}
-        handleShow={handleShow}
         className="table-row"
       />
     );
