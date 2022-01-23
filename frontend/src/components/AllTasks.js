@@ -11,12 +11,15 @@ export default function AllTasks(props) {
   // props
   const { date, userId, addedTask, setDeletedTask } = props;
 
+  // handles popup events, open and close
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   // when the user deletes a task
   const handleDelete = () => {
     console.log("hello");
+    // close the popup
+    setShow(false);
     // make a post axios request to remove the task from the database
   };
 
@@ -37,20 +40,21 @@ export default function AllTasks(props) {
         <Modal
           show={show}
           onHide={handleClose}
-          aria-labelledby="contained-modal-title-vcenter"
           centered
+          animation={false}
           className="delete-popup"
+          dialogClassName="custom-dialog"
+          size="lg"
         >
           <Modal.Header closeButton>
-            <Modal.Title>Modal heading</Modal.Title>
+            <Modal.Title>Are you sure you want to delete this task?</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleClose}>
-              Save Changes
+            <Button variant="primary" onClick={handleDelete}>
+              Confirm
             </Button>
           </Modal.Footer>
         </Modal>
