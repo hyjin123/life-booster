@@ -36,7 +36,7 @@ export default function AllTasks(props) {
         },
       })
       .then((res) => {
-        console.log(res.data);
+        // save all tasks for a user in a state
         setAllTasks(res.data);
       })
       .catch((err) => console.log(err));

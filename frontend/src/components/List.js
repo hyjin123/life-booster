@@ -1,6 +1,14 @@
 import axios from "axios";
 import { React, useState } from "react";
-import { Tabs, Tab, Modal, Button, Form, FloatingLabel, Container } from "react-bootstrap";
+import {
+  Tabs,
+  Tab,
+  Modal,
+  Button,
+  Form,
+  FloatingLabel,
+  Container,
+} from "react-bootstrap";
 import "./List.css";
 import AllTasks from "./AllTasks";
 import UncompletedTasks from "./UncompletedTasks";
@@ -13,7 +21,7 @@ export default function List(props) {
   const [deletedTask, setDeletedTask] = useState(0);
 
   // props
-  const {show, setShow} = props;
+  const { show, setShow } = props;
 
   // handling the open and close of the add task pop up
   const handleClose = () => {
@@ -39,7 +47,7 @@ export default function List(props) {
         taskPriority: data.get("task-priority"),
       })
       .then((res) => {
-        console.log(res.data);
+        // set addedTask hook to the id so that the all task table re-renders whenever user adds a task
         setAddedTask(res.data.id);
         setShow(false);
       })
@@ -72,7 +80,13 @@ export default function List(props) {
         className="mb-3"
       >
         <Tab eventKey="home" title="All Tasks">
-          <AllTasks date={props.date} userId={props.userId} addedTask={addedTask} deletedTask={deletedTask} setDeletedTask={setDeletedTask} />
+          <AllTasks
+            date={props.date}
+            userId={props.userId}
+            addedTask={addedTask}
+            deletedTask={deletedTask}
+            setDeletedTask={setDeletedTask}
+          />
         </Tab>
         <Tab eventKey="uncompleted" title="Uncompleted">
           <UncompletedTasks date={props.date} userId={props.userId} />
