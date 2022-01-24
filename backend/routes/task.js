@@ -62,5 +62,17 @@ module.exports = (db) => {
       .catch(err => console.log(err))
   });
 
+  router.post("/edit", function (req, res) {
+    const taskId = req.body.id;
+    const taskType = req.body.taskType;
+    const taskName = req.body.taskName;
+    const taskDescription = req.body.taskDescription;
+    const taskStatus = req.body.taskStatus;
+    console.log(req.body);
+    console.log(taskName);
+    // make a query to edit the task based on new information
+
+  });
+
   return router;
 };

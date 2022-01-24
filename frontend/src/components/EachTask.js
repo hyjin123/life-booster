@@ -31,7 +31,7 @@ export default function EachTask(props) {
     setEditShow(true);
   };
 
-  // when the user deletes a task
+  // when the user deletes a task, make an axios request to the backend to delete from database
   const handleDelete = () => {
     // close the popup
     setDeleteShow(false);
@@ -47,8 +47,24 @@ export default function EachTask(props) {
       .catch((err) => console.log(err));
   };
 
-  const handleEdit = () => {
-    console.log("hello");
+  // when the user edits a task, make an axios request to backend to update the database
+  const handleEdit = (event) => {
+    event.preventDefault();
+    // close the popup
+    setEditShow(false);
+    // make a post axios request
+    axios
+      .post("task/edit", {
+        id,
+        taskType,
+        taskName,
+        taskDescription,
+        taskStatus,
+      })
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch(err => console.log(err));
   };
 
   console.log(taskName);
@@ -154,7 +170,7 @@ export default function EachTask(props) {
             <Button variant="secondary" onClick={handleEditClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleEditClose} type="submit">
+            <Button variant="primary" onClick={handleEdit} type="submit">
               Save Task
             </Button>
           </Modal.Footer>
