@@ -6,6 +6,10 @@ export default function EachTask(props) {
   // hooks
   const [deleteShow, setDeleteShow] = useState(false);
   const [editShow, setEditShow] = useState(false);
+  const [taskType, setTaskType] = useState(props.type);
+  const [taskName, setTaskName] = useState(props.name);
+  const [taskDescription, setTaskDescription] = useState(props.description);
+  const [taskStatus, setTaskStatus] = useState(props.status);
 
   // destructure props
   const { id, type, name, description, status, setDeletedTask } = props;
@@ -44,8 +48,10 @@ export default function EachTask(props) {
   };
 
   const handleEdit = () => {
-    console.log("hello")
+    console.log("hello");
   };
+
+  console.log(taskName);
 
   return (
     <div className="table-row">
@@ -92,6 +98,8 @@ export default function EachTask(props) {
               type="text"
               name="task-name"
               placeholder="Description"
+              value={taskName}
+              onChange={(event) => setTaskName(event.target.value)}
             />
           </Form.Group>
 
@@ -102,10 +110,17 @@ export default function EachTask(props) {
               name="task-detail"
               placeholder="Details"
               rows={3}
+              value={taskDescription}
+              onChange={(event) => setTaskDescription(event.target.value)}
             />
           </Form.Group>
           <FloatingLabel controlId="floatingSelect" label="Type">
-            <Form.Select name="task-type" aria-label="Type">
+            <Form.Select
+              value={taskType}
+              onChange={(event) => setTaskType(event.target.value)}
+              name="task-type"
+              aria-label="Type"
+            >
               <option value="general">General</option>
               <option value="errand">Errand</option>
               <option value="household-chore">Household Chore</option>
@@ -116,7 +131,12 @@ export default function EachTask(props) {
             </Form.Select>
           </FloatingLabel>
           <FloatingLabel controlId="floatingSelect" label="Status">
-            <Form.Select name="task-status" aria-label="Default select example">
+            <Form.Select
+              value={taskStatus}
+              onChange={(event) => setTaskStatus(event.target.value)}
+              name="task-status"
+              aria-label="Default select example"
+            >
               <option value="not-completed">Not Completed</option>
               <option value="in-progress">In Progress</option>
               <option value="completed">Completed</option>
