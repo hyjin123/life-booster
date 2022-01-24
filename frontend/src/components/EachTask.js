@@ -12,7 +12,7 @@ export default function EachTask(props) {
   const [taskStatus, setTaskStatus] = useState(props.status);
 
   // destructure props
-  const { id, type, name, description, status, setDeletedTask } = props;
+  const { id, type, name, description, status, setDeletedTask, setEditedTask } = props;
 
   // handles popup events, open and close
   const handleDeleteClose = () => {
@@ -63,6 +63,8 @@ export default function EachTask(props) {
       })
       .then((res) => {
         console.log(res.data)
+        // set state to the new name so that the page re-renders
+        setEditedTask(res.data.name);
       })
       .catch(err => console.log(err));
   };

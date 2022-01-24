@@ -19,6 +19,7 @@ export default function List(props) {
   // state that allows the all task list to re-render if this changes (whenever new task is added)
   const [addedTask, setAddedTask] = useState(0);
   const [deletedTask, setDeletedTask] = useState(0);
+  const [editedTask, setEditedTask] = useState("");
 
   // props
   const { show, setShow } = props;
@@ -86,6 +87,8 @@ export default function List(props) {
             addedTask={addedTask}
             deletedTask={deletedTask}
             setDeletedTask={setDeletedTask}
+            editedTask={editedTask}
+            setEditedTask={setEditedTask}
           />
         </Tab>
         <Tab eventKey="uncompleted" title="Uncompleted">

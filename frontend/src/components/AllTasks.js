@@ -9,7 +9,7 @@ export default function AllTasks(props) {
   const [allTasks, setAllTasks] = useState([]);
 
   // props
-  const { date, userId, addedTask, deletedTask, setDeletedTask } = props;
+  const { date, userId, addedTask, deletedTask, setDeletedTask, editedTask, setEditedTask } = props;
 
   // map through all the tasks
   const listItems = allTasks.map((task) => {
@@ -23,6 +23,7 @@ export default function AllTasks(props) {
         status={task.status}
         className="table-row"
         setDeletedTask={setDeletedTask}
+        setEditedTask={setEditedTask}
       />
     );
   });
@@ -40,7 +41,7 @@ export default function AllTasks(props) {
         setAllTasks(res.data);
       })
       .catch((err) => console.log(err));
-  }, [addedTask, deletedTask]);
+  }, [addedTask, deletedTask, editedTask]);
 
   return (
     <div className="table-container">

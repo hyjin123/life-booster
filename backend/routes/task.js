@@ -74,10 +74,10 @@ module.exports = (db) => {
     UPDATE tasks
     SET name = $1, description = $2, type = $3, status = $4
     WHERE id = $5
-    RETURNING id;
+    RETURNING id, name;
     `, queryParams)
       .then(data => {
-        console.log(data.rows)
+        res.json(data.rows[0])
       })
       .catch(err => console.log(err))
   });
