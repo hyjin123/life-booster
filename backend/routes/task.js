@@ -68,10 +68,18 @@ module.exports = (db) => {
     const taskName = req.body.taskName;
     const taskDescription = req.body.taskDescription;
     const taskStatus = req.body.taskStatus;
-    console.log(req.body);
-    console.log(taskName);
+    const queryParams = [taskName, taskDescription, taskType, taskStatus, taskId];
     // make a query to edit the task based on new information
-
+    db.query(`
+    UPDATE tasks
+    SET name = $1, description = $2, type = $3, status = $4
+    WHERE id = $5
+    RETURNING id;
+    `, queryParams)
+      .then(data => {
+        console.log(data.rows)
+      })
+      .catch(err => console.log(err))
   });
 
   return router;
