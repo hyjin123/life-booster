@@ -20,6 +20,7 @@ export default function List(props) {
   const [addedTask, setAddedTask] = useState(0);
   const [deletedTask, setDeletedTask] = useState(0);
   const [editedTask, setEditedTask] = useState("");
+  const [key, setKey] = useState('home');
 
   // props
   const { show, setShow } = props;
@@ -63,6 +64,8 @@ export default function List(props) {
     setListOn(false);
   };
 
+  console.log(key)
+
   return (
     <div className="task-container">
       <h1>
@@ -76,9 +79,10 @@ export default function List(props) {
         <button onClick={handleShow}>Add a Task</button>
       </h3>
       <Tabs
-        defaultActiveKey="home"
-        id="uncontrolled-tab-example"
+        id="controlled-tab-example"
         className="mb-3"
+        activeKey={key}
+        onSelect={(k) => setKey(k)}
       >
         <Tab eventKey="home" title="All Tasks">
           <AllTasks
@@ -92,13 +96,37 @@ export default function List(props) {
           />
         </Tab>
         <Tab eventKey="uncompleted" title="Uncompleted">
-          <UncompletedTasks date={props.date} userId={props.userId} />
+          <UncompletedTasks
+            date={props.date}
+            userId={props.userId}
+            addedTask={addedTask}
+            deletedTask={deletedTask}
+            setDeletedTask={setDeletedTask}
+            editedTask={editedTask}
+            setEditedTask={setEditedTask}
+          />
         </Tab>
-        <Tab eventKey="progress" title="In-progress">
-          <InProgressTasks date={props.date} userId={props.userId} />
+        <Tab eventKey="in-progress" title="In-progress">
+          <InProgressTasks
+            date={props.date}
+            userId={props.userId}
+            addedTask={addedTask}
+            deletedTask={deletedTask}
+            setDeletedTask={setDeletedTask}
+            editedTask={editedTask}
+            setEditedTask={setEditedTask}
+          />
         </Tab>
         <Tab eventKey="completed" title="Completed">
-          <CompletedTasks date={props.date} userId={props.userId} />
+          <CompletedTasks
+            date={props.date}
+            userId={props.userId}
+            addedTask={addedTask}
+            deletedTask={deletedTask}
+            setDeletedTask={setDeletedTask}
+            editedTask={editedTask}
+            setEditedTask={setEditedTask}
+          />
         </Tab>
       </Tabs>
 

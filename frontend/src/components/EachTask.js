@@ -69,8 +69,6 @@ export default function EachTask(props) {
       .catch(err => console.log(err));
   };
 
-  console.log(taskName);
-
   return (
     <div className="table-row">
       <div>{type}</div>
