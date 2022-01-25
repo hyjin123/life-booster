@@ -17,7 +17,7 @@ export default function List(props) {
   const [addedTask, setAddedTask] = useState(0);
   const [deletedTask, setDeletedTask] = useState(0);
   const [editedTask, setEditedTask] = useState("");
-  const [key, setKey] = useState("home");
+  const [tabKey, setTabKey] = useState("home");
 
   // props
   const { show, setShow } = props;
@@ -60,9 +60,9 @@ export default function List(props) {
   const handleClick = () => {
     setListOn(false);
   };
-
-  console.log(key);
-
+  
+  console.log(tabKey);
+  
   return (
     <div className="task-container">
       <h1>
@@ -78,12 +78,12 @@ export default function List(props) {
       <Tabs
         id="controlled-tab-example"
         className="mb-3"
-        activeKey={key}
-        onSelect={(k) => setKey(k)}
+        activeKey={tabKey}
+        onSelect={(k) => setTabKey(k)}
       >
         <Tab eventKey="home" title="All Tasks">
           <AllTasks
-            key={key}
+            tabKey={tabKey}
             date={props.date}
             userId={props.userId}
             addedTask={addedTask}
@@ -95,7 +95,7 @@ export default function List(props) {
         </Tab>
         <Tab eventKey="uncompleted" title="Uncompleted">
           <AllTasks
-            key={key}
+            tabKey={tabKey}
             date={props.date}
             userId={props.userId}
             addedTask={addedTask}
@@ -107,7 +107,7 @@ export default function List(props) {
         </Tab>
         <Tab eventKey="in-progress" title="In-progress">
           <AllTasks
-            key={key}
+            tabKey={tabKey}
             date={props.date}
             userId={props.userId}
             addedTask={addedTask}
@@ -119,7 +119,7 @@ export default function List(props) {
         </Tab>
         <Tab eventKey="completed" title="Completed">
           <AllTasks
-            key={key}
+            tabKey={tabKey}
             date={props.date}
             userId={props.userId}
             addedTask={addedTask}

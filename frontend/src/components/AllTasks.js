@@ -4,11 +4,15 @@ import axios from "axios";
 import EachTask from "./EachTask";
 
 export default function AllTasks(props) {
-  // hooks for all tasks
+  // hooks for 4 different task statuses
   const [allTasks, setAllTasks] = useState([]);
+  const [notCompletedTasks, setNotCompletedTasks] = useState([]);
+  const [inProgressTasks, setInProgressTasks] = useState([]);
+  const [completedTasks, setCompletedTasks] = useState([]);
 
   // props
   const {
+    tabKey,
     date,
     userId,
     addedTask,
@@ -19,7 +23,7 @@ export default function AllTasks(props) {
   } = props;
 
   // map through ALL tasks
-  const listItems = allTasks.map((task) => {
+  const listAllItems = allTasks.map((task) => {
     return (
       <EachTask
         key={task.id}
@@ -34,21 +38,59 @@ export default function AllTasks(props) {
       />
     );
   });
-  // make a backend request to retrieve all the tasks for the chosen date
-  useEffect(() => {
-    axios
-      .get(`/task/all`, {
-        params: {
-          date: date,
-          userId: userId,
-        },
-      })
-      .then((res) => {
-        // save all tasks for a user in a state
-        setAllTasks(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, [addedTask, deletedTask, editedTask]);
+
+  console.log(listAllItems)
+
+  // map through not completed tasks
+  const listNotCompletedItems = notCompletedTasks.map((task) => {
+    return (
+      <EachTask
+        key={task.id}
+        id={task.id}
+        type={task.type}
+        name={task.name}
+        description={task.description}
+        status={task.status}
+        className="table-row"
+        setDeletedTask={setDeletedTask}
+        setEditedTask={setEditedTask}
+      />
+    );
+  });
+
+  // map through in-progress tasks
+  const listInProgressItems = inProgressTasks.map((task) => {
+    return (
+      <EachTask
+        key={task.id}
+        id={task.id}
+        type={task.type}
+        name={task.name}
+        description={task.description}
+        status={task.status}
+        className="table-row"
+        setDeletedTask={setDeletedTask}
+        setEditedTask={setEditedTask}
+      />
+    );
+  });
+
+  // map through completed tasks
+  const listCompletedItems = completedTasks.map((task) => {
+    return (
+      <EachTask
+        key={task.id}
+        id={task.id}
+        type={task.type}
+        name={task.name}
+        description={task.description}
+        status={task.status}
+        className="table-row"
+        setDeletedTask={setDeletedTask}
+        setEditedTask={setEditedTask}
+      />
+    );
+  });
 
   // make 4 backend requests to retrive all, uncompleted, in-progress, and completed tasks
   useEffect(() => {
@@ -78,12 +120,13 @@ export default function AllTasks(props) {
         },
       }),
     ]).then((all) => {
-      console.log(all[0].data);
-      console.log(all[1].data);
-      console.log(all[2].data);
-      console.log(all[3].data);
+      // set state with data coming from the backend
+      setAllTasks(all[0].data);
+      setNotCompletedTasks(all[1].data);
+      setInProgressTasks(all[2].data);
+      setCompletedTasks(all[3].data);
     });
-  }, []);
+  }, [addedTask, deletedTask, editedTask]);
 
   return (
     <div className="table-container">
@@ -95,7 +138,10 @@ export default function AllTasks(props) {
         <div>Edit</div>
         <div>Delete</div>
       </div>
-      {listItems}
+      {tabKey === "home" && listAllItems}
+      {tabKey === "uncompleted" && listNotCompletedItems }
+      {tabKey === "in-progress" && listInProgressItems }
+      {tabKey === "completed" && listCompletedItems }
     </div>
   );
 }
