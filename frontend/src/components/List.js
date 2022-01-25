@@ -11,16 +11,13 @@ import {
 } from "react-bootstrap";
 import "./List.css";
 import AllTasks from "./AllTasks";
-import UncompletedTasks from "./UncompletedTasks";
-import InProgressTasks from "./InProgressTasks";
-import CompletedTasks from "./CompletedTasks";
 
 export default function List(props) {
   // state that allows the all task list to re-render if this changes (whenever new task is added)
   const [addedTask, setAddedTask] = useState(0);
   const [deletedTask, setDeletedTask] = useState(0);
   const [editedTask, setEditedTask] = useState("");
-  const [key, setKey] = useState('home');
+  const [key, setKey] = useState("home");
 
   // props
   const { show, setShow } = props;
@@ -39,7 +36,7 @@ export default function List(props) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     axios
-      .post("/task", {
+      .post("/task/add", {
         userId: props.userId,
         date: props.date,
         taskName: data.get("task-name"),
@@ -64,7 +61,7 @@ export default function List(props) {
     setListOn(false);
   };
 
-  console.log(key)
+  console.log(key);
 
   return (
     <div className="task-container">
@@ -86,6 +83,7 @@ export default function List(props) {
       >
         <Tab eventKey="home" title="All Tasks">
           <AllTasks
+            key={key}
             date={props.date}
             userId={props.userId}
             addedTask={addedTask}
@@ -96,7 +94,8 @@ export default function List(props) {
           />
         </Tab>
         <Tab eventKey="uncompleted" title="Uncompleted">
-          <UncompletedTasks
+          <AllTasks
+            key={key}
             date={props.date}
             userId={props.userId}
             addedTask={addedTask}
@@ -107,7 +106,8 @@ export default function List(props) {
           />
         </Tab>
         <Tab eventKey="in-progress" title="In-progress">
-          <InProgressTasks
+          <AllTasks
+            key={key}
             date={props.date}
             userId={props.userId}
             addedTask={addedTask}
@@ -118,7 +118,8 @@ export default function List(props) {
           />
         </Tab>
         <Tab eventKey="completed" title="Completed">
-          <CompletedTasks
+          <AllTasks
+            key={key}
             date={props.date}
             userId={props.userId}
             addedTask={addedTask}

@@ -8,9 +8,17 @@ export default function AllTasks(props) {
   const [allTasks, setAllTasks] = useState([]);
 
   // props
-  const { date, userId, addedTask, deletedTask, setDeletedTask, editedTask, setEditedTask } = props;
+  const {
+    date,
+    userId,
+    addedTask,
+    deletedTask,
+    setDeletedTask,
+    editedTask,
+    setEditedTask,
+  } = props;
 
-  // map through all the tasks
+  // map through ALL tasks
   const listItems = allTasks.map((task) => {
     return (
       <EachTask
@@ -41,6 +49,18 @@ export default function AllTasks(props) {
       })
       .catch((err) => console.log(err));
   }, [addedTask, deletedTask, editedTask]);
+
+  // make 4 backend requests to retrive all, uncompleted, in-progress, and completed tasks
+  useEffect(() => {
+    Promise.all([
+      axios.get("/task/all"),
+      axios.get("/task/uncompleted"),
+      axios.get("/task/in-progress"),
+      axios.get("/task/completed"),
+    ]).then((all) => {
+      console.log(all);
+    });
+  }, []);
 
   return (
     <div className="table-container">

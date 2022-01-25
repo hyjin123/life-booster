@@ -2,7 +2,34 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
-  router.post("/", function (req, res) {
+
+  router.get("/all", function (req, res) {
+    // save the query into a date variable, 2021-01-20
+    const fullDate = req.query.date;
+    const date = new Date(fullDate);
+    const userId = req.query.userId;
+    const queryParams = [fullDate, userId];
+    // retrive all tasks from this date from the db, NEED TO SET THE USERID AS WELL OR ELSE ALL TASK WILL BE HERE
+    db.query(`SELECT * FROM tasks WHERE date = $1 AND user_id = $2`, queryParams)
+      .then(data => {
+        res.json(data.rows);
+      })
+      .catch(err => console.log(err))
+  });
+
+  router.get("/uncompleted", function (req, res) {
+  
+  });
+
+  router.get("/in-progress", function (req, res) {
+  
+  });
+
+  router.get("/completed", function (req, res) {
+  
+  });
+
+  router.post("/add", function (req, res) {
     const userId = req.body.userId;
     const date = req.body.date;
     const taskName = req.body.taskName;
@@ -36,20 +63,6 @@ module.exports = (db) => {
         res.json(data.rows[0]);
       })
       .catch((err) => console.log(err));
-  });
-
-  router.get("/all", function (req, res) {
-    // save the query into a date variable, 2021-01-20
-    const fullDate = req.query.date;
-    const date = new Date(fullDate);
-    const userId = req.query.userId;
-    const queryParams = [fullDate, userId];
-    // retrive all tasks from this date from the db, NEED TO SET THE USERID AS WELL OR ELSE ALL TASK WILL BE HERE
-    db.query(`SELECT * FROM tasks WHERE date = $1 AND user_id = $2`, queryParams)
-      .then(data => {
-        res.json(data.rows);
-      })
-      .catch(err => console.log(err))
   });
   
   router.post("/delete", function (req, res) {
