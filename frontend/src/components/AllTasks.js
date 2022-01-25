@@ -53,12 +53,35 @@ export default function AllTasks(props) {
   // make 4 backend requests to retrive all, uncompleted, in-progress, and completed tasks
   useEffect(() => {
     Promise.all([
-      axios.get("/task/all"),
-      axios.get("/task/uncompleted"),
-      axios.get("/task/in-progress"),
-      axios.get("/task/completed"),
+      axios.get("/task/all", {
+        params: {
+          date: date,
+          userId: userId,
+        },
+      }),
+      axios.get("/task/uncompleted", {
+        params: {
+          date: date,
+          userId: userId,
+        },
+      }),
+      axios.get("/task/in-progress", {
+        params: {
+          date: date,
+          userId: userId,
+        },
+      }),
+      axios.get("/task/completed", {
+        params: {
+          date: date,
+          userId: userId,
+        },
+      }),
     ]).then((all) => {
-      console.log(all);
+      console.log(all[0].data);
+      console.log(all[1].data);
+      console.log(all[2].data);
+      console.log(all[3].data);
     });
   }, []);
 

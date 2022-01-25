@@ -2,31 +2,75 @@ const express = require("express");
 const router = express.Router();
 
 module.exports = (db) => {
-
   router.get("/all", function (req, res) {
     // save the query into a date variable, 2021-01-20
     const fullDate = req.query.date;
     const date = new Date(fullDate);
     const userId = req.query.userId;
     const queryParams = [fullDate, userId];
-    // retrive all tasks from this date from the db, NEED TO SET THE USERID AS WELL OR ELSE ALL TASK WILL BE HERE
-    db.query(`SELECT * FROM tasks WHERE date = $1 AND user_id = $2`, queryParams)
-      .then(data => {
+    // retrive all tasks from this date from the db
+    db.query(
+      `SELECT * FROM tasks WHERE date = $1 AND user_id = $2`,
+      queryParams
+    )
+      .then((data) => {
         res.json(data.rows);
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err));
   });
 
   router.get("/uncompleted", function (req, res) {
-  
+    // save the query into a date variable, 2021-01-20
+    const fullDate = req.query.date;
+    const date = new Date(fullDate);
+    const userId = req.query.userId;
+    const status = "not-completed";
+    const queryParams = [fullDate, userId, status];
+    // retrive all tasks from this date from the db
+    db.query(
+      `SELECT * FROM tasks WHERE date = $1 AND user_id = $2 AND status = $3`,
+      queryParams
+    )
+      .then((data) => {
+        res.json(data.rows);
+      })
+      .catch((err) => console.log(err));
   });
 
   router.get("/in-progress", function (req, res) {
-  
+    // save the query into a date variable, 2021-01-20
+    const fullDate = req.query.date;
+    const date = new Date(fullDate);
+    const userId = req.query.userId;
+    const status = "in-progress";
+    const queryParams = [fullDate, userId, status];
+    // retrive all tasks from this date from the db
+    db.query(
+      `SELECT * FROM tasks WHERE date = $1 AND user_id = $2 AND status = $3`,
+      queryParams
+    )
+      .then((data) => {
+        res.json(data.rows);
+      })
+      .catch((err) => console.log(err));
   });
 
   router.get("/completed", function (req, res) {
-  
+    // save the query into a date variable, 2021-01-20
+    const fullDate = req.query.date;
+    const date = new Date(fullDate);
+    const userId = req.query.userId;
+    const status = "completed";
+    const queryParams = [fullDate, userId, status];
+    // retrive all tasks from this date from the db
+    db.query(
+      `SELECT * FROM tasks WHERE date = $1 AND user_id = $2 AND status = $3`,
+      queryParams
+    )
+      .then((data) => {
+        res.json(data.rows);
+      })
+      .catch((err) => console.log(err));
   });
 
   router.post("/add", function (req, res) {
@@ -52,7 +96,7 @@ module.exports = (db) => {
       taskType,
       date,
       taskStatus,
-      taskPriority
+      taskPriority,
     ];
     db.query(
       `INSERT INTO tasks (user_id, name, description, type, date, status, high_priority) 
@@ -64,15 +108,15 @@ module.exports = (db) => {
       })
       .catch((err) => console.log(err));
   });
-  
+
   router.post("/delete", function (req, res) {
     const taskId = req.body.id;
     // make a query to remove the task from the task table (database)
     db.query(`DELETE FROM tasks WHERE id = $1 RETURNING id;`, [taskId])
-      .then(data => {
-        res.json(data.rows[0])
+      .then((data) => {
+        res.json(data.rows[0]);
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err));
   });
 
   router.post("/edit", function (req, res) {
@@ -81,18 +125,27 @@ module.exports = (db) => {
     const taskName = req.body.taskName;
     const taskDescription = req.body.taskDescription;
     const taskStatus = req.body.taskStatus;
-    const queryParams = [taskName, taskDescription, taskType, taskStatus, taskId];
+    const queryParams = [
+      taskName,
+      taskDescription,
+      taskType,
+      taskStatus,
+      taskId,
+    ];
     // make a query to edit the task based on new information
-    db.query(`
+    db.query(
+      `
     UPDATE tasks
     SET name = $1, description = $2, type = $3, status = $4
     WHERE id = $5
     RETURNING id, name;
-    `, queryParams)
-      .then(data => {
-        res.json(data.rows[0])
+    `,
+      queryParams
+    )
+      .then((data) => {
+        res.json(data.rows[0]);
       })
-      .catch(err => console.log(err))
+      .catch((err) => console.log(err));
   });
 
   return router;
