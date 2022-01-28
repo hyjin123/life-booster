@@ -14,6 +14,10 @@ export default function EachTask(props) {
   // destructure props
   const { id, type, name, description, status, setDeletedTask, editedTask, setEditedTask } = props;
 
+  // capitalize type and status
+  const capitalType = type.charAt(0).toUpperCase() + type.slice(1);
+  const capitalStatus = status.charAt(0).toUpperCase() + status.slice(1);
+
   // handles popup events, open and close
   const handleDeleteClose = () => {
     setDeleteShow(false);
@@ -71,15 +75,15 @@ export default function EachTask(props) {
 
   return (
     <div className="table-row">
-      <div>{type}</div>
+      <div>{capitalType}</div>
+      <div className={`table-status ${status === "not-completed" && "not-completed"} ${status === "in-progress" && "in-progress"} ${status === "completed" && "completed"}`}>{capitalStatus}</div>
       <div>{name}</div>
-      <div>{description}</div>
-      <div>{status}</div>
+      <div className="table-description">{description}</div>
       <div>
-        <button onClick={handleEditShow}>Edit</button>
+        <button className="edit-button" onClick={handleEditShow}>Edit</button>
       </div>
       <div>
-        <button onClick={handleDeleteShow}>Delete</button>
+        <button className="delete-button" onClick={handleDeleteShow}>Delete</button>
       </div>
       <Modal
         show={deleteShow}

@@ -12,6 +12,10 @@
 .table-row {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
+  border: 1px solid rgba(163, 163, 163, 1);
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px 0;
 }
 
 .modal-backdrop {
@@ -20,4 +24,52 @@
 
 .custom-dialog {
   width: 28%;
+}
+
+.table-description {
+  overflow-y: auto;
+}
+
+.delete-button {
+  background-color: #ff3729;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+
+.edit-button {
+  background-color: #2e8df2;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 20px;
+}
+
+.edit-button:hover {
+  background-color: #0777ed;
+}
+
+.delete-button:hover {
+  background-color: #d61609;
+}
+
+.table-status {
+  border: 1px solid rgba(163, 163, 163, 1);
+  border-radius: 20px;
+  text-align: center;
+  width: 70%;
+  padding: 6px 0 8px 0;
+}
+
+.not-completed {
+  background-color: #f5493d;
+}
+
+.in-progress {
+  background-color: #e3b734;
+}
+
+.completed {
+  background-color: #36f576;
 }
