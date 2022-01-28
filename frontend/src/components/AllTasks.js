@@ -34,12 +34,11 @@ export default function AllTasks(props) {
         status={task.status}
         className="table-row"
         setDeletedTask={setDeletedTask}
+        editedTask={editedTask}
         setEditedTask={setEditedTask}
       />
     );
   });
-
-  console.log(listAllItems)
 
   // map through not completed tasks
   const listNotCompletedItems = notCompletedTasks.map((task) => {
@@ -53,6 +52,7 @@ export default function AllTasks(props) {
         status={task.status}
         className="table-row"
         setDeletedTask={setDeletedTask}
+        editedTask={editedTask}
         setEditedTask={setEditedTask}
       />
     );
@@ -70,6 +70,7 @@ export default function AllTasks(props) {
         status={task.status}
         className="table-row"
         setDeletedTask={setDeletedTask}
+        editedTask={editedTask}
         setEditedTask={setEditedTask}
       />
     );
@@ -87,6 +88,7 @@ export default function AllTasks(props) {
         status={task.status}
         className="table-row"
         setDeletedTask={setDeletedTask}
+        editedTask={editedTask}
         setEditedTask={setEditedTask}
       />
     );

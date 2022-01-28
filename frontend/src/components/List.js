@@ -16,7 +16,7 @@ export default function List(props) {
   // state that allows the all task list to re-render if this changes (whenever new task is added)
   const [addedTask, setAddedTask] = useState(0);
   const [deletedTask, setDeletedTask] = useState(0);
-  const [editedTask, setEditedTask] = useState("");
+  const [editedTask, setEditedTask] = useState(0);
   const [tabKey, setTabKey] = useState("home");
 
   // props
