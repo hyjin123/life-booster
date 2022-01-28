@@ -6,12 +6,12 @@
 
 .table-header {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: 1.5fr 2fr 2fr 2fr 1fr 1fr;
 }
 
 .table-row {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: 1.5fr 2fr 2fr 2fr 1fr 1fr;
   border: 1px solid rgba(163, 163, 163, 1);
   padding: 10px;
   border-radius: 10px;
@@ -46,12 +46,21 @@
   padding: 5px 20px;
 }
 
+.button-div {
+  width: 50%;
+}
+
 .edit-button:hover {
   background-color: #0777ed;
 }
 
 .delete-button:hover {
   background-color: #d61609;
+}
+
+
+.table-type {
+  padding-left: 40px;
 }
 
 .table-status {

@@ -115,12 +115,12 @@ export default function EachTask(props) {
       </div>
       <div>{name}</div>
       <div className="table-description">{description}</div>
-      <div>
+      <div className="button-div">
         <button className="edit-button" onClick={handleEditShow}>
           Edit
         </button>
       </div>
-      <div>
+      <div className="button-div">
         <button className="delete-button" onClick={handleDeleteShow}>
           Delete
         </button>

@@ -133,10 +133,10 @@ export default function AllTasks(props) {
   return (
     <div className="table-container">
       <div className="table-header">
-        <div>Type</div>
+        <div className="table-type">Type</div>
+        <div>Status</div>
         <div>Name</div>
         <div>Details</div>
-        <div>Status</div>
         <div>Edit</div>
         <div>Delete</div>
       </div>
