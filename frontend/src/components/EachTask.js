@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, FloatingLabel } from "react-bootstrap";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faHome,
+  faShoppingCart,
+  faUtensils,
+  faRunning,
+  faUser,
+  faBriefcase,
+  faTasks,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function EachTask(props) {
   // hooks
@@ -12,7 +22,16 @@ export default function EachTask(props) {
   const [taskStatus, setTaskStatus] = useState(props.status);
 
   // destructure props
-  const { id, type, name, description, status, setDeletedTask, editedTask, setEditedTask } = props;
+  const {
+    id,
+    type,
+    name,
+    description,
+    status,
+    setDeletedTask,
+    editedTask,
+    setEditedTask,
+  } = props;
 
   // capitalize type and status
   const capitalType = type.charAt(0).toUpperCase() + type.slice(1);
@@ -66,24 +85,45 @@ export default function EachTask(props) {
         taskStatus,
       })
       .then((res) => {
-        console.log(res.data)
+        console.log(res.data);
         // set state to the new name so that the page re-renders
         setEditedTask((editedTask) => editedTask + 1);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
   return (
     <div className="table-row">
-      <div>{capitalType}</div>
-      <div className={`table-status ${status === "not-completed" && "not-completed"} ${status === "in-progress" && "in-progress"} ${status === "completed" && "completed"}`}>{capitalStatus}</div>
+      <div className="table-type">
+        {type === "general" && <FontAwesomeIcon icon={faTasks} />}
+        {type === "errand" && <FontAwesomeIcon icon={faShoppingCart} />}
+        {type === "household-chore" && <FontAwesomeIcon icon={faHome} />}
+        {type === "meal" && <FontAwesomeIcon icon={faUtensils} />}
+        {type === "leisure" && <FontAwesomeIcon icon={faRunning} />}
+        {type === "personal" && <FontAwesomeIcon icon={faUser} />}
+        {type === "work" && <FontAwesomeIcon icon={faBriefcase} />}
+        <div>{capitalType}</div>
+      </div>
+      <div
+        className={`table-status ${
+          status === "not-completed" && "not-completed"
+        } ${status === "in-progress" && "in-progress"} ${
+          status === "completed" && "completed"
+        }`}
+      >
+        {capitalStatus}
+      </div>
       <div>{name}</div>
       <div className="table-description">{description}</div>
       <div>
-        <button className="edit-button" onClick={handleEditShow}>Edit</button>
+        <button className="edit-button" onClick={handleEditShow}>
+          Edit
+        </button>
       </div>
       <div>
-        <button className="delete-button" onClick={handleDeleteShow}>Delete</button>
+        <button className="delete-button" onClick={handleDeleteShow}>
+          Delete
+        </button>
       </div>
       <Modal
         show={deleteShow}
