@@ -1,17 +1,18 @@
 import "./NavBar.css";
 import { Nav } from "react-bootstrap";
 import { FaHome, FaPencilAlt, FaLockOpen } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck, faSpinner, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 function NavBar(props) {
-
   const handleLogout = (event) => {
     event.preventDefault();
     // reset the token to an empty string
-    localStorage.setItem('jwtToken', '', { maxAge: 1 })
+    localStorage.setItem("jwtToken", "", { maxAge: 1 });
     // redirect to home page after logout
     window.location = "/home";
-  }
-  
+  };
+
   return (
     <div className="position-relative">
       <Nav defaultActiveKey="/home" className="flex-column nav-container">
@@ -40,8 +41,17 @@ function NavBar(props) {
             Logout
           </Nav.Link>
         )}
-        <Nav.Link className="nav" eventKey="disabled" disabled>
-          Disabled
+        <Nav.Link className="nav" href="/home">
+          <FontAwesomeIcon icon={faTimes} className="nav-icon"/>
+          Uncompleted Tasks
+        </Nav.Link>
+        <Nav.Link className="nav" href="/home">
+          <FontAwesomeIcon icon={faSpinner} className="nav-icon"/>
+          In-Progress Tasks
+        </Nav.Link>
+        <Nav.Link className="nav" href="/home">
+          <FontAwesomeIcon icon={faCheck} className="nav-icon"/>
+          Completed Tasks
         </Nav.Link>
       </Nav>
     </div>

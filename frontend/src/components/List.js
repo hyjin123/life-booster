@@ -63,10 +63,10 @@ export default function List(props) {
     
   return (
     <div className="task-container">
-      <h1>
+      <h2>
         {months[date.getMonth()]} {date.getDate()}, {date.getFullYear()},{" "}
         {weekdays[date.getDay()]}
-      </h1>
+      </h2>
       <h3>
         <button className="main-button" onClick={handleClick}>Go Back to the Calendar</button>
       </h3>
