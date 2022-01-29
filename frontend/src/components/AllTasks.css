@@ -83,3 +83,15 @@
 .completed {
   background-color: #36f576;
 }
+
+.tab {
+  background-color: none;
+}
+
+.tabs {
+  background-color: green;
+}
+
+.tabs:active {
+  background-color: red;
+}

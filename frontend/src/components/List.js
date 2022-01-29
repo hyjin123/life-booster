@@ -60,9 +60,7 @@ export default function List(props) {
   const handleClick = () => {
     setListOn(false);
   };
-  
-  console.log(tabKey);
-  
+    
   return (
     <div className="task-container">
       <h1>
@@ -77,11 +75,11 @@ export default function List(props) {
       </h3>
       <Tabs
         id="controlled-tab-example"
-        className="mb-3"
+        className="mb-3 tab"
         activeKey={tabKey}
         onSelect={(k) => setTabKey(k)}
       >
-        <Tab eventKey="home" title="All Tasks">
+        <Tab eventKey="home" title="All Tasks" tabClassName={`hello`}>
           <AllTasks
             tabKey={tabKey}
             date={props.date}
@@ -93,7 +91,7 @@ export default function List(props) {
             setEditedTask={setEditedTask}
           />
         </Tab>
-        <Tab eventKey="uncompleted" title="Uncompleted">
+        <Tab eventKey="uncompleted" title="Uncompleted" tabClassName="tabs">
           <AllTasks
             tabKey={tabKey}
             date={props.date}
@@ -105,7 +103,7 @@ export default function List(props) {
             setEditedTask={setEditedTask}
           />
         </Tab>
-        <Tab eventKey="in-progress" title="In-progress">
+        <Tab eventKey="in-progress" title="In-progress" tabClassName="tabs">
           <AllTasks
             tabKey={tabKey}
             date={props.date}
@@ -117,7 +115,7 @@ export default function List(props) {
             setEditedTask={setEditedTask}
           />
         </Tab>
-        <Tab eventKey="completed" title="Completed">
+        <Tab eventKey="completed" title="Completed" tabClassName="tabs">
           <AllTasks
             tabKey={tabKey}
             date={props.date}
