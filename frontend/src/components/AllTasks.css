@@ -101,3 +101,15 @@
   color: #445175;
   border: none;
 }
+
+.delete-title {
+  padding: 20px 0 0 0;
+}
+
+select {
+  margin-top: 20px;
+}
+
+div.form-check {
+  margin-top: 15px;
+}

@@ -135,7 +135,9 @@ export default function EachTask(props) {
         size="lg"
       >
         <Modal.Header closeButton>
-          <Modal.Title>Are you sure you want to delete this task?</Modal.Title>
+          <Modal.Title className="delete-title">
+            Are you sure you want to delete this task?
+          </Modal.Title>
         </Modal.Header>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleDeleteClose}>
@@ -174,7 +176,11 @@ export default function EachTask(props) {
               onChange={(event) => setTaskDescription(event.target.value)}
             />
           </Form.Group>
-          <FloatingLabel controlId="floatingSelect" label="Type">
+          <FloatingLabel
+            controlId="floatingSelect"
+            label="Type"
+            className="edit-type"
+          >
             <Form.Select
               value={taskType}
               onChange={(event) => setTaskType(event.target.value)}
@@ -192,6 +198,7 @@ export default function EachTask(props) {
           </FloatingLabel>
           <FloatingLabel controlId="floatingSelect" label="Status">
             <Form.Select
+              className="edit-status"
               value={taskStatus}
               onChange={(event) => setTaskStatus(event.target.value)}
               name="task-status"
