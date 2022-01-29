@@ -84,14 +84,20 @@
   background-color: #36f576;
 }
 
-.tab {
-  background-color: none;
+/* tabs */
+.task-container .nav-link {
+  color: #7185bf;
+  border: none;
 }
 
-.tabs {
-  background-color: green;
+/* selected-tab */
+.task-container .nav-link.active {
+  color: #445175;
+  border-bottom: 2px solid #445175 !important;
+  background-color: transparent;
 }
 
-.tabs:active {
-  background-color: red;
+.task-container .nav-link:hover {
+  color: #445175;
+  border: none;
 }

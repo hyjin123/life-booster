@@ -79,7 +79,7 @@ export default function List(props) {
         activeKey={tabKey}
         onSelect={(k) => setTabKey(k)}
       >
-        <Tab eventKey="home" title="All Tasks" tabClassName={`hello`}>
+        <Tab eventKey="home" title="All Tasks">
           <AllTasks
             tabKey={tabKey}
             date={props.date}
@@ -91,7 +91,7 @@ export default function List(props) {
             setEditedTask={setEditedTask}
           />
         </Tab>
-        <Tab eventKey="uncompleted" title="Uncompleted" tabClassName="tabs">
+        <Tab eventKey="uncompleted" title="Uncompleted">
           <AllTasks
             tabKey={tabKey}
             date={props.date}
@@ -103,7 +103,7 @@ export default function List(props) {
             setEditedTask={setEditedTask}
           />
         </Tab>
-        <Tab eventKey="in-progress" title="In-progress" tabClassName="tabs">
+        <Tab eventKey="in-progress" title="In-progress">
           <AllTasks
             tabKey={tabKey}
             date={props.date}
@@ -115,7 +115,7 @@ export default function List(props) {
             setEditedTask={setEditedTask}
           />
         </Tab>
-        <Tab eventKey="completed" title="Completed" tabClassName="tabs">
+        <Tab eventKey="completed" title="Completed">
           <AllTasks
             tabKey={tabKey}
             date={props.date}
