@@ -68,10 +68,10 @@ export default function List(props) {
         {weekdays[date.getDay()]}
       </h1>
       <h3>
-        <button onClick={handleClick}>Go Back to the Calendar</button>
+        <button className="main-button" onClick={handleClick}>Go Back to the Calendar</button>
       </h3>
       <h3>
-        <button onClick={handleShow}>Add a Task</button>
+        <button className="main-button" onClick={handleShow}>Add a Task</button>
       </h3>
       <Tabs
         id="controlled-tab-example"
