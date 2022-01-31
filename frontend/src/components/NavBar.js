@@ -16,7 +16,7 @@ function NavBar(props) {
   return (
     <div className="position-relative">
       <Nav defaultActiveKey="/home" className="flex-column nav-container">
-        <Nav.Link className="nav" href="/">
+        <Nav.Link className="nav" href="/home">
           Life Booster
         </Nav.Link>
         <Nav.Link className="nav" href="/home">
