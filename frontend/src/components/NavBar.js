@@ -41,15 +41,15 @@ function NavBar(props) {
             Logout
           </Nav.Link>
         )}
-        <Nav.Link className="nav" href="/home">
+        <Nav.Link className="nav" href="/uncompleted">
           <FontAwesomeIcon icon={faTimes} className="nav-icon"/>
           Uncompleted Tasks
         </Nav.Link>
-        <Nav.Link className="nav" href="/home">
+        <Nav.Link className="nav" href="/in-progress">
           <FontAwesomeIcon icon={faSpinner} className="nav-icon"/>
           In-Progress Tasks
         </Nav.Link>
-        <Nav.Link className="nav" href="/home">
+        <Nav.Link className="nav" href="/completed">
           <FontAwesomeIcon icon={faCheck} className="nav-icon"/>
           Completed Tasks
         </Nav.Link>

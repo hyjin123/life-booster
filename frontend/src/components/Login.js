@@ -23,6 +23,7 @@ function Login(props) {
       .catch(err => console.log(err));
   };
 
+  console.log(props.userId)
   return (
     <div className="register-container">
       <NavBar userId={props.userId} />
