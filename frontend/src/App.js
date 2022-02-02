@@ -18,8 +18,9 @@ function App() {
   const [lastName, setLastName] = useState("");
 
   console.log(firstName)
+
   return (
-    <BrowserRouter>
+    <BrowserRouter forceRefresh={true}>
       <Routes>
         <Route path="/" element={<FrontPage />} />
         <Route path="/home" element={<MainPage userId={userId} setUserId={setUserId} firstName={firstName} setFirstName={setFirstName} lastName={lastName} setLastName={setLastName} />} />

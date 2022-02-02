@@ -1,4 +1,5 @@
 import "./NavBar.css";
+import { Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import { FaHome, FaPencilAlt, FaLockOpen } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,46 +15,44 @@ function NavBar(props) {
   };
 
   return (
-    <div className="position-relative">
-      <Nav defaultActiveKey="/home" className="flex-column nav-container">
-        <Nav.Link className="nav" href="/home">
+    <div className="position-relative nav-container">
+        <Link className="nav" to="/home">
           Life Booster
-        </Nav.Link>
-        <Nav.Link className="nav" href="/home">
+        </Link>
+        <Link className="nav" to="/home">
           <FaHome className="nav-icon" />
           Home
-        </Nav.Link>
+        </Link>
         {props.userId === 0 && (
-          <Nav.Link className="nav" href="/register">
+          <Link className="nav" to="/register">
             <FaPencilAlt className="nav-icon" />
             Register
-          </Nav.Link>
+          </Link>
         )}
         {props.userId === 0 && (
-          <Nav.Link className="nav" href="/login">
+          <Link className="nav" to="/login">
             <FaLockOpen className="nav-icon" />
             Login
-          </Nav.Link>
+          </Link>
         )}
         {props.userId !== 0 && (
-          <Nav.Link className="nav" href="/login" onClick={handleLogout}>
+          <Link className="nav" to="/login" onClick={handleLogout}>
             <FaLockOpen className="nav-icon" />
             Logout
-          </Nav.Link>
+          </Link>
         )}
-        <Nav.Link className="nav" href="/uncompleted">
+        <Link className="nav" to="/uncompleted">
           <FontAwesomeIcon icon={faTimes} className="nav-icon"/>
           Uncompleted Tasks
-        </Nav.Link>
-        <Nav.Link className="nav" href="/in-progress">
+        </Link>
+        <Link className="nav" to="/in-progress">
           <FontAwesomeIcon icon={faSpinner} className="nav-icon"/>
           In-Progress Tasks
-        </Nav.Link>
-        <Nav.Link className="nav" href="/completed">
+        </Link>
+        <Link className="nav" to="/completed">
           <FontAwesomeIcon icon={faCheck} className="nav-icon"/>
           Completed Tasks
-        </Nav.Link>
-      </Nav>
+        </Link>
     </div>
   );
 }
