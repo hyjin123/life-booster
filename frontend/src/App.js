@@ -26,9 +26,9 @@ function App() {
         <Route path="/home" element={<MainPage userId={userId} setUserId={setUserId} firstName={firstName} setFirstName={setFirstName} lastName={lastName} setLastName={setLastName} />} />
         <Route path="/register" element={<Register userId={userId} />} />
         <Route path="/login" element={<Login userId={userId} />} />
-        <Route path="/uncompleted" element={<UncompletedTasks userId={userId} setFirstName={setFirstName} setLastName={setLastName} setUserId={setUserId} firstName={firstName} lastName={lastName} />} />
-        <Route path="/in-progress" element={<InProgressTasks userId={userId} />} />
-        <Route path="/completed" element={<CompletedTasks userId={userId} />} />
+        <Route path="/uncompleted" element={<UncompletedTasks userId={userId} firstName={firstName} lastName={lastName} />} />
+        <Route path="/in-progress" element={<InProgressTasks userId={userId} firstName={firstName} lastName={lastName} />} />
+        <Route path="/completed" element={<CompletedTasks userId={userId} firstName={firstName} lastName={lastName} />} />
       </Routes>
     </BrowserRouter>
   );
