@@ -52,10 +52,13 @@ function MainPage(props) {
       })
       .then((res) => {
         const user = res.data.user;
+        const record = JSON.stringify(user);
         // set states based on logged in user information
         setUserId(user.id);
         setFirstName(user.first_name);
         setLastName(user.last_name);
+        // set local storage with the user information so all components can refer to this
+        localStorage.setItem("user", record);
       })
       .catch((err) => console.log(err));
   }, [userId, show]);

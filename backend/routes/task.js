@@ -21,7 +21,7 @@ module.exports = (db) => {
 
   // return uncompleted tasks for a user for all the days
   router.get("/uncompleted/all", function (req, res) {
-
+    console.log(req.query.userId)
   });
 
   // return in-progress tasks for a user for all the days
@@ -31,7 +31,7 @@ module.exports = (db) => {
 
   // return completed tasks for a user for all the days
   router.get("/completed/all", function (req, res) {
-    
+
   });
 
   // return uncompleted tasks for a user for a specific day
