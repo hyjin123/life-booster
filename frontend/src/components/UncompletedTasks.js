@@ -4,6 +4,7 @@ import Banner from "./Banner";
 import { useNavigate } from "react-router";
 import List from "./List";
 import axios from "axios";
+import EachTask from "./EachTask";
 
 export default function UncompletedTasks(props) {
   let navigate = useNavigate();

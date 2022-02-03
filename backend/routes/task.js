@@ -19,6 +19,22 @@ module.exports = (db) => {
       .catch((err) => console.log(err));
   });
 
+  // return uncompleted tasks for a user for all the days
+  router.get("/uncompleted/all", function (req, res) {
+
+  });
+
+  // return in-progress tasks for a user for all the days
+  router.get("/in-progress/all", function (req, res) {
+
+  });
+
+  // return completed tasks for a user for all the days
+  router.get("/completed/all", function (req, res) {
+    
+  });
+
+  // return uncompleted tasks for a user for a specific day
   router.get("/uncompleted", function (req, res) {
     // save the query into a date variable, 2021-01-20
     const fullDate = req.query.date;
@@ -37,6 +53,7 @@ module.exports = (db) => {
       .catch((err) => console.log(err));
   });
 
+  // return in-progress tasks for a user for a specific day
   router.get("/in-progress", function (req, res) {
     // save the query into a date variable, 2021-01-20
     const fullDate = req.query.date;
@@ -55,6 +72,7 @@ module.exports = (db) => {
       .catch((err) => console.log(err));
   });
 
+  // return completed tasks for a user for a specific day
   router.get("/completed", function (req, res) {
     // save the query into a date variable, 2021-01-20
     const fullDate = req.query.date;
