@@ -6,15 +6,16 @@ import axios from "axios";
 import EachTask from "./EachTask";
 
 export default function UncompletedTasks(props) {
-  const [allUncompletedTasks, setAllUncompletedTasks] = useState();
+  const [allUncompletedTasks, setAllUncompletedTasks] = useState([]);
+  const [deletedTask, setDeletedTask] = useState(0);
+  const [editedTask, setEditedTask] = useState(0);
 
   const navigate = useNavigate();
 
+  // retrive the user info from the local storage since that data persists (can use redux for this in the future)
   const user = JSON.parse(localStorage.getItem("user"));
   const firstName = user.first_name;
-  console.log(firstName)
   const lastName = user.last_name;
-  console.log(lastName)
   const userId = user.id;
 
   // handle clicking of "go back to the calendar"
@@ -24,17 +25,36 @@ export default function UncompletedTasks(props) {
 
   // make an axios request to fetch ALL uncompleted tasks
   useEffect(() => {
-    axios.get("/task/uncompleted/all", {
-      params: {
-        userId: userId,
-      },
-    })
-      .then(res => {
-        console.log(res.data)
+    axios
+      .get("/task/uncompleted/all", {
+        params: {
+          userId: userId,
+        },
       })
-      .catch(err => console.log(err))
-  }, [])
+      .then((res) => {
+        console.log(res.data);
+        setAllUncompletedTasks(res.data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
+  // map through not completed tasks
+  const listUnCompletedItems = allUncompletedTasks.map((task) => {
+    return (
+      <EachTask
+        key={task.id}
+        id={task.id}
+        type={task.type}
+        name={task.name}
+        description={task.description}
+        status={task.status}
+        className="table-row"
+        setDeletedTask={setDeletedTask}
+        editedTask={editedTask}
+        setEditedTask={setEditedTask}
+      />
+    );
+  });
   return (
     <div className="main-container">
       <NavBar />
@@ -56,7 +76,7 @@ export default function UncompletedTasks(props) {
             <div>Edit</div>
             <div>Delete</div>
           </div>
-          <h1>hello</h1>
+          {listUnCompletedItems}
         </div>
       </div>
     </div>

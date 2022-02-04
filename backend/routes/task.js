@@ -21,7 +21,17 @@ module.exports = (db) => {
 
   // return uncompleted tasks for a user for all the days
   router.get("/uncompleted/all", function (req, res) {
-    console.log(req.query.userId)
+    const userId = req.query.userId;
+    const status = "not-completed";
+    const queryParams = [userId, status];
+    db.query(
+      `SELECT * FROM tasks WHERE user_id = $1 AND status = $2`,
+      queryParams
+    )
+      .then((data) => {
+        res.json(data.rows);
+      })
+      .catch((err) => console.log(err));
   });
 
   // return in-progress tasks for a user for all the days
