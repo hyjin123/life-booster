@@ -43,6 +43,7 @@ export default function UncompletedTasks(props) {
     return (
       <EachTask
         key={task.id}
+        date={task.date}
         id={task.id}
         type={task.type}
         name={task.name}
@@ -68,8 +69,9 @@ export default function UncompletedTasks(props) {
           </h3>
         </div>
         <div className="table-container">
-          <div className="table-header">
+          <div className="table-header2">
             <div className="table-type">Type</div>
+            <div>Date</div>
             <div>Status</div>
             <div>Name</div>
             <div>Details</div>

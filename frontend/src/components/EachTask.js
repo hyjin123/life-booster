@@ -36,6 +36,10 @@ export default function EachTask(props) {
   // capitalize type and status
   const capitalType = type.charAt(0).toUpperCase() + type.slice(1);
   const capitalStatus = status.charAt(0).toUpperCase() + status.slice(1);
+  let formattedDate = "";
+  if (props.date) {
+    formattedDate = new Date(props.date).toISOString().slice(0, 10);
+  }
 
   // handles popup events, open and close
   const handleDeleteClose = () => {
@@ -93,7 +97,7 @@ export default function EachTask(props) {
   };
 
   return (
-    <div className="table-row">
+    <div className={`${props.date && "table-row2"} ${!props.date && "table-row"}`}>
       <div className="table-type">
         {type === "general" && <FontAwesomeIcon icon={faTasks} />}
         {type === "errand" && <FontAwesomeIcon icon={faShoppingCart} />}
@@ -104,6 +108,7 @@ export default function EachTask(props) {
         {type === "work" && <FontAwesomeIcon icon={faBriefcase} />}
         <div>{capitalType}</div>
       </div>
+      {props.date && <div>{formattedDate}</div>}
       <div
         className={`table-status ${
           status === "not-completed" && "not-completed"
