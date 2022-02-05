@@ -9,7 +9,7 @@ export default function Tasks(props) {
   const [allUncompletedTasks, setAllUncompletedTasks] = useState([]);
   const [allInProgressTasks, setAllInProgressTasks] = useState([]);
   const [allCompletedTasks, setAllCompletedTasks] = useState([]);
-  const [deletedTask, setDeletedTask] = useState(0)
+  const [deletedTask, setDeletedTask] = useState(0);
   const [editedTask, setEditedTask] = useState(0);
 
   const navigate = useNavigate();
@@ -72,6 +72,44 @@ export default function Tasks(props) {
       />
     );
   });
+
+  // map through in-progress tasks
+  const listInProgressItems = allInProgressTasks.map((task) => {
+    return (
+      <EachTask
+        key={task.id}
+        date={task.date}
+        id={task.id}
+        type={task.type}
+        name={task.name}
+        description={task.description}
+        status={task.status}
+        className="table-row"
+        setDeletedTask={setDeletedTask}
+        editedTask={editedTask}
+        setEditedTask={setEditedTask}
+      />
+    );
+  });
+
+  // map through completed tasks
+  const listCompletedItems = allCompletedTasks.map((task) => {
+    return (
+      <EachTask
+        key={task.id}
+        date={task.date}
+        id={task.id}
+        type={task.type}
+        name={task.name}
+        description={task.description}
+        status={task.status}
+        className="table-row"
+        setDeletedTask={setDeletedTask}
+        editedTask={editedTask}
+        setEditedTask={setEditedTask}
+      />
+    );
+  });
   return (
     <div className="main-container">
       <NavBar />
@@ -94,7 +132,9 @@ export default function Tasks(props) {
             <div>Edit</div>
             <div>Delete</div>
           </div>
-          {listUnCompletedItems}
+          {status === "uncompleted" && listUnCompletedItems}
+          {status === "in-progress" && listInProgressItems}
+          {status === "completed" && listCompletedItems}
         </div>
       </div>
     </div>
