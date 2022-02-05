@@ -6,10 +6,7 @@ import FrontPage from './components/FrontPage';
 import MainPage from './components/MainPage';
 import Register from './components/Register';
 import Login from './components/Login';
-import List from './components/List';
-import UncompletedTasks from './components/UncompletedTasks';
-import InProgressTasks from './components/InProgressTasks';
-import CompletedTasks from './components/CompletedTasks';
+import Tasks from './components/Tasks';
 
 function App() {
 
@@ -26,9 +23,7 @@ function App() {
         <Route path="/home" element={<MainPage userId={userId} setUserId={setUserId} firstName={firstName} setFirstName={setFirstName} lastName={lastName} setLastName={setLastName} />} />
         <Route path="/register" element={<Register userId={userId} />} />
         <Route path="/login" element={<Login userId={userId} />} />
-        <Route path="/uncompleted" element={<UncompletedTasks userId={userId} firstName={firstName} lastName={lastName} />} />
-        <Route path="/in-progress" element={<InProgressTasks userId={userId} firstName={firstName} lastName={lastName} />} />
-        <Route path="/completed" element={<CompletedTasks userId={userId} firstName={firstName} lastName={lastName} />} />
+        <Route path="/tasks/:status" element={<Tasks userId={userId} firstName={firstName} lastName={lastName} />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import Banner from "./Banner";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import axios from "axios";
 import EachTask from "./EachTask";
 
-export default function UncompletedTasks(props) {
+export default function Tasks(props) {
   const [allUncompletedTasks, setAllUncompletedTasks] = useState([]);
-  const [deletedTask, setDeletedTask] = useState(0);
+  const [allInProgressTasks, setAllInProgressTasks] = useState([]);
+  const [allCompletedTasks, setAllCompletedTasks] = useState([]);
+  const [deletedTask, setDeletedTask] = useState(0)
   const [editedTask, setEditedTask] = useState(0);
 
   const navigate = useNavigate();
+
+  // access the url parameter and save it in a variable
+  const { status } = useParams();
 
   // retrive the user info from the local storage since that data persists (can use redux for this in the future)
   const user = JSON.parse(localStorage.getItem("user"));
@@ -23,20 +28,31 @@ export default function UncompletedTasks(props) {
     navigate("/home");
   };
 
-  // make an axios request to fetch ALL uncompleted tasks
+  // make 4 backend requests to retrive all, uncompleted, in-progress, and completed tasks
   useEffect(() => {
-    axios
-      .get("/task/uncompleted/all", {
+    Promise.all([
+      axios.get("/task/uncompleted/all", {
         params: {
           userId: userId,
         },
-      })
-      .then((res) => {
-        console.log(res.data);
-        setAllUncompletedTasks(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+      }),
+      axios.get("/task/in-progress/all", {
+        params: {
+          userId: userId,
+        },
+      }),
+      axios.get("/task/completed", {
+        params: {
+          userId: userId,
+        },
+      }),
+    ]).then((all) => {
+      // set state with data coming from the backend
+      setAllUncompletedTasks(all[0].data);
+      setAllInProgressTasks(all[1].data);
+      setAllCompletedTasks(all[2].data);
+    });
+  }, [deletedTask, editedTask]);
 
   // map through not completed tasks
   const listUnCompletedItems = allUncompletedTasks.map((task) => {

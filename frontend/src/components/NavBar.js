@@ -16,43 +16,52 @@ function NavBar(props) {
 
   return (
     <div className="position-relative nav-container">
-        <Link className="nav" to="/home">
-          Life Booster
+      <Link className="nav" to="/home">
+        Life Booster
+      </Link>
+      <Link className="nav" to="/home">
+        <FaHome className="nav-icon" />
+        Home
+      </Link>
+      {props.userId === 0 && (
+        <Link className="nav" to="/register">
+          <FaPencilAlt className="nav-icon" />
+          Register
         </Link>
-        <Link className="nav" to="/home">
-          <FaHome className="nav-icon" />
-          Home
+      )}
+      {props.userId === 0 && (
+        <Link className="nav" to="/login">
+          <FaLockOpen className="nav-icon" />
+          Login
         </Link>
-        {props.userId === 0 && (
-          <Link className="nav" to="/register">
-            <FaPencilAlt className="nav-icon" />
-            Register
-          </Link>
-        )}
-        {props.userId === 0 && (
-          <Link className="nav" to="/login">
-            <FaLockOpen className="nav-icon" />
-            Login
-          </Link>
-        )}
-        {props.userId !== 0 && (
-          <Link className="nav" to="/login" onClick={handleLogout}>
-            <FaLockOpen className="nav-icon" />
-            Logout
-          </Link>
-        )}
-        <Link className="nav" to="/uncompleted">
-          <FontAwesomeIcon icon={faTimes} className="nav-icon"/>
-          Uncompleted Tasks
+      )}
+      {props.userId !== 0 && (
+        <Link className="nav" to="/login" onClick={handleLogout}>
+          <FaLockOpen className="nav-icon" />
+          Logout
         </Link>
-        <Link className="nav" to="/in-progress">
-          <FontAwesomeIcon icon={faSpinner} className="nav-icon"/>
-          In-Progress Tasks
-        </Link>
-        <Link className="nav" to="/completed">
-          <FontAwesomeIcon icon={faCheck} className="nav-icon"/>
-          Completed Tasks
-        </Link>
+      )}
+      <Link
+        className="nav"
+        to="/tasks/uncompleted"
+      >
+        <FontAwesomeIcon icon={faTimes} className="nav-icon" />
+        Uncompleted Tasks
+      </Link>
+      <Link
+        className="nav"
+        to="/tasks/in-progress"
+      >
+        <FontAwesomeIcon icon={faSpinner} className="nav-icon" />
+        In-Progress Tasks
+      </Link>
+      <Link
+        className="nav"
+        to="/tasks/completed"
+      >
+        <FontAwesomeIcon icon={faCheck} className="nav-icon" />
+        Completed Tasks
+      </Link>
     </div>
   );
 }
