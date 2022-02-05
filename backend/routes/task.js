@@ -36,12 +36,32 @@ module.exports = (db) => {
 
   // return in-progress tasks for a user for all the days
   router.get("/in-progress/all", function (req, res) {
-
+    const userId = req.query.userId;
+    const status = "in-progress";
+    const queryParams = [userId, status];
+    db.query(
+      `SELECT * FROM tasks WHERE user_id = $1 AND status = $2`,
+      queryParams
+    )
+      .then((data) => {
+        res.json(data.rows);
+      })
+      .catch((err) => console.log(err));
   });
 
   // return completed tasks for a user for all the days
   router.get("/completed/all", function (req, res) {
-
+    const userId = req.query.userId;
+    const status = "completed";
+    const queryParams = [userId, status];
+    db.query(
+      `SELECT * FROM tasks WHERE user_id = $1 AND status = $2`,
+      queryParams
+    )
+      .then((data) => {
+        res.json(data.rows);
+      })
+      .catch((err) => console.log(err));
   });
 
   // return uncompleted tasks for a user for a specific day
