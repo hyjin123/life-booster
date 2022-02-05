@@ -41,7 +41,7 @@ export default function Tasks(props) {
           userId: userId,
         },
       }),
-      axios.get("/task/completed", {
+      axios.get("/task/completed/all", {
         params: {
           userId: userId,
         },

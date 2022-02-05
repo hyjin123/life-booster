@@ -81,7 +81,7 @@ export default function EachTask(props) {
     setEditShow(false);
     // make a post axios request
     axios
-      .post("task/edit", {
+      .post("/task/edit", {
         id,
         taskType,
         taskName,
