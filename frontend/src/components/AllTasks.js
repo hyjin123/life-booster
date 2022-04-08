@@ -23,7 +23,7 @@ export default function AllTasks(props) {
   } = props;
 
   // map through ALL tasks
-  const listAllItems = allTasks.map((task) => {
+  const listAllItems = allTasks.sort((a,b) => a.id - b.id).map((task) => {
     return (
       <EachTask
         key={task.id}
@@ -42,7 +42,7 @@ export default function AllTasks(props) {
   });
 
   // map through not completed tasks
-  const listNotCompletedItems = notCompletedTasks.map((task) => {
+  const listNotCompletedItems = notCompletedTasks.sort((a,b) => a.id - b.id).map((task) => {
     return (
       <EachTask
         key={task.id}
@@ -61,7 +61,7 @@ export default function AllTasks(props) {
   });
 
   // map through in-progress tasks
-  const listInProgressItems = inProgressTasks.map((task) => {
+  const listInProgressItems = inProgressTasks.sort((a,b) => a.id - b.id).map((task) => {
     return (
       <EachTask
         key={task.id}
@@ -80,7 +80,7 @@ export default function AllTasks(props) {
   });
 
   // map through completed tasks
-  const listCompletedItems = completedTasks.map((task) => {
+  const listCompletedItems = completedTasks.sort((a,b) => a.id - b.id).map((task) => {
     return (
       <EachTask
         key={task.id}
