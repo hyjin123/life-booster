@@ -23,84 +23,92 @@ export default function AllTasks(props) {
   } = props;
 
   // map through ALL tasks
-  const listAllItems = allTasks.sort((a,b) => a.id - b.id).map((task) => {
-    return (
-      <EachTask
-        key={task.id}
-        date={task.date}
-        id={task.id}
-        priority={task.high_priority}
-        type={task.type}
-        name={task.name}
-        description={task.description}
-        status={task.status}
-        className="table-row"
-        setDeletedTask={setDeletedTask}
-        editedTask={editedTask}
-        setEditedTask={setEditedTask}
-      />
-    );
-  });
+  const listAllItems = allTasks
+    .sort((a, b) => a.id - b.id)
+    .map((task) => {
+      return (
+        <EachTask
+          key={task.id}
+          date={task.date}
+          id={task.id}
+          priority={task.high_priority}
+          type={task.type}
+          name={task.name}
+          description={task.description}
+          status={task.status}
+          className="table-row"
+          setDeletedTask={setDeletedTask}
+          editedTask={editedTask}
+          setEditedTask={setEditedTask}
+        />
+      );
+    });
 
   // map through not completed tasks
-  const listNotCompletedItems = notCompletedTasks.sort((a,b) => a.id - b.id).map((task) => {
-    return (
-      <EachTask
-        key={task.id}
-        date={task.date}
-        id={task.id}
-        priority={task.high_priority}
-        type={task.type}
-        name={task.name}
-        description={task.description}
-        status={task.status}
-        className="table-row"
-        setDeletedTask={setDeletedTask}
-        editedTask={editedTask}
-        setEditedTask={setEditedTask}
-      />
-    );
-  });
+  const listNotCompletedItems = notCompletedTasks
+    .sort((a, b) => a.id - b.id)
+    .map((task) => {
+      return (
+        <EachTask
+          key={task.id}
+          date={task.date}
+          id={task.id}
+          priority={task.high_priority}
+          type={task.type}
+          name={task.name}
+          description={task.description}
+          status={task.status}
+          className="table-row"
+          setDeletedTask={setDeletedTask}
+          editedTask={editedTask}
+          setEditedTask={setEditedTask}
+        />
+      );
+    });
 
   // map through in-progress tasks
-  const listInProgressItems = inProgressTasks.sort((a,b) => a.id - b.id).map((task) => {
-    return (
-      <EachTask
-        key={task.id}
-        date={task.date}
-        id={task.id}
-        priority={task.high_priority}
-        type={task.type}
-        name={task.name}
-        description={task.description}
-        status={task.status}
-        className="table-row"
-        setDeletedTask={setDeletedTask}
-        editedTask={editedTask}
-        setEditedTask={setEditedTask}
-      />
-    );
-  });
+  const listInProgressItems = inProgressTasks
+    .sort((a, b) => a.id - b.id)
+    .map((task) => {
+      return (
+        <EachTask
+          key={task.id}
+          date={task.date}
+          id={task.id}
+          priority={task.high_priority}
+          type={task.type}
+          name={task.name}
+          description={task.description}
+          status={task.status}
+          className="table-row"
+          setDeletedTask={setDeletedTask}
+          editedTask={editedTask}
+          setEditedTask={setEditedTask}
+        />
+      );
+    });
 
   // map through completed tasks
-  const listCompletedItems = completedTasks.sort((a,b) => a.id - b.id).map((task) => {
-    return (
-      <EachTask
-        key={task.id}
-        date={task.date}
-        id={task.id}
-        priority={task.high_priority}
-        type={task.type}
-        name={task.name}
-        description={task.description}
-        status={task.status}
-        className="table-row"
-        setDeletedTask={setDeletedTask}
-        editedTask={editedTask}
-        setEditedTask={setEditedTask}
-      />
-    );
-  });
+  const listCompletedItems = completedTasks
+    .sort((a, b) => a.id - b.id)
+    .map((task) => {
+      return (
+        <EachTask
+          key={task.id}
+          date={task.date}
+          id={task.id}
+          priority={task.high_priority}
+          type={task.type}
+          name={task.name}
+          description={task.description}
+          status={task.status}
+          className="table-row"
+          setDeletedTask={setDeletedTask}
+          editedTask={editedTask}
+          setEditedTask={setEditedTask}
+        />
+      );
+    });
 
   // make 4 backend requests to retrive all, uncompleted, in-progress, and completed tasks
   useEffect(() => {
@@ -140,9 +148,10 @@ export default function AllTasks(props) {
 
   return (
     <div className="table-container">
-      <div className="table-header">
+      <div className="table-header2">
         <div>High Priority</div>
         <div>Type</div>
+        <div>Date</div>
         <div>Status</div>
         <div>Name</div>
         <div>Details</div>
@@ -150,9 +159,9 @@ export default function AllTasks(props) {
         <div>Delete</div>
       </div>
       {tabKey === "home" && listAllItems}
-      {tabKey === "uncompleted" && listNotCompletedItems }
-      {tabKey === "in-progress" && listInProgressItems }
-      {tabKey === "completed" && listCompletedItems }
+      {tabKey === "uncompleted" && listNotCompletedItems}
+      {tabKey === "in-progress" && listInProgressItems}
+      {tabKey === "completed" && listCompletedItems}
     </div>
   );
 }
