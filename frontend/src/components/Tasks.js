@@ -61,6 +61,7 @@ export default function Tasks(props) {
         key={task.id}
         date={task.date}
         id={task.id}
+        priority={task.high_priority}
         type={task.type}
         name={task.name}
         description={task.description}
@@ -80,6 +81,7 @@ export default function Tasks(props) {
         key={task.id}
         date={task.date}
         id={task.id}
+        priority={task.high_priority}
         type={task.type}
         name={task.name}
         description={task.description}
@@ -99,6 +101,7 @@ export default function Tasks(props) {
         key={task.id}
         date={task.date}
         id={task.id}
+        priority={task.high_priority}
         type={task.type}
         name={task.name}
         description={task.description}
@@ -124,7 +127,7 @@ export default function Tasks(props) {
         </div>
         <div className="table-container">
           <div className="table-header2">
-            <div className="table-type">Type</div>
+            <div>Type</div>
             <div>Date</div>
             <div>Status</div>
             <div>Name</div>

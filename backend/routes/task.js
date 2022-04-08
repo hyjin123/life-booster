@@ -169,6 +169,7 @@ module.exports = (db) => {
 
   router.post("/edit", function (req, res) {
     const taskId = req.body.id;
+    const taskPriority = req.body.taskPriority;
     const taskType = req.body.taskType;
     const taskName = req.body.taskName;
     const taskDescription = req.body.taskDescription;
@@ -179,12 +180,13 @@ module.exports = (db) => {
       taskType,
       taskStatus,
       taskId,
+      taskPriority,
     ];
     // make a query to edit the task based on new information
     db.query(
       `
     UPDATE tasks
-    SET name = $1, description = $2, type = $3, status = $4
+    SET name = $1, description = $2, type = $3, status = $4, high_priority = $6
     WHERE id = $5
     RETURNING id, name;
     `,

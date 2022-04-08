@@ -47,6 +47,7 @@ export default function AllTasks(props) {
       <EachTask
         key={task.id}
         id={task.id}
+        priority={task.high_priority}
         type={task.type}
         name={task.name}
         description={task.description}
@@ -65,6 +66,7 @@ export default function AllTasks(props) {
       <EachTask
         key={task.id}
         id={task.id}
+        priority={task.high_priority}
         type={task.type}
         name={task.name}
         description={task.description}
@@ -83,6 +85,7 @@ export default function AllTasks(props) {
       <EachTask
         key={task.id}
         id={task.id}
+        priority={task.high_priority}
         type={task.type}
         name={task.name}
         description={task.description}

@@ -17,11 +17,13 @@ export default function EachTask(props) {
   // hooks
   const [deleteShow, setDeleteShow] = useState(false);
   const [editShow, setEditShow] = useState(false);
+  const [taskPriority, setTaskPriority] = useState(props.priority);
   const [taskType, setTaskType] = useState(props.type);
   const [taskName, setTaskName] = useState(props.name);
   const [taskDescription, setTaskDescription] = useState(props.description);
   const [taskStatus, setTaskStatus] = useState(props.status);
 
+  console.log(taskPriority)
   // destructure props
   const {
     id,
@@ -85,6 +87,7 @@ export default function EachTask(props) {
     axios
       .post("/task/edit", {
         id,
+        taskPriority,
         taskType,
         taskName,
         taskDescription,
@@ -230,6 +233,8 @@ export default function EachTask(props) {
               name="task-priority"
               type="checkbox"
               label="High Priority"
+              checked={taskPriority}
+              onChange={(event) => setTaskPriority(event.target.checked)}
             />
           </Form.Group>
           <Modal.Footer>
