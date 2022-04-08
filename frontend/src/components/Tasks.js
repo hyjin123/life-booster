@@ -55,64 +55,70 @@ export default function Tasks(props) {
   }, [deletedTask, editedTask]);
 
   // map through not completed tasks
-  const listUnCompletedItems = allUncompletedTasks.sort((a,b) => a.id - b.id).map((task) => {
-    return (
-      <EachTask
-        key={task.id}
-        date={task.date}
-        id={task.id}
-        priority={task.high_priority}
-        type={task.type}
-        name={task.name}
-        description={task.description}
-        status={task.status}
-        className="table-row"
-        setDeletedTask={setDeletedTask}
-        editedTask={editedTask}
-        setEditedTask={setEditedTask}
-      />
-    );
-  });
+  const listUnCompletedItems = allUncompletedTasks
+    .sort((a, b) => a.id - b.id)
+    .map((task) => {
+      return (
+        <EachTask
+          key={task.id}
+          date={task.date}
+          id={task.id}
+          priority={task.high_priority}
+          type={task.type}
+          name={task.name}
+          description={task.description}
+          status={task.status}
+          className="table-row"
+          setDeletedTask={setDeletedTask}
+          editedTask={editedTask}
+          setEditedTask={setEditedTask}
+        />
+      );
+    });
 
   // map through in-progress tasks
-  const listInProgressItems = allInProgressTasks.sort((a,b) => a.id - b.id).map((task) => {
-    return (
-      <EachTask
-        key={task.id}
-        date={task.date}
-        id={task.id}
-        priority={task.high_priority}
-        type={task.type}
-        name={task.name}
-        description={task.description}
-        status={task.status}
-        className="table-row"
-        setDeletedTask={setDeletedTask}
-        editedTask={editedTask}
-        setEditedTask={setEditedTask}
-      />
-    );
-  });
+  const listInProgressItems = allInProgressTasks
+    .sort((a, b) => a.id - b.id)
+    .map((task) => {
+      return (
+        <EachTask
+          key={task.id}
+          date={task.date}
+          id={task.id}
+          priority={task.high_priority}
+          type={task.type}
+          name={task.name}
+          description={task.description}
+          status={task.status}
+          className="table-row"
+          setDeletedTask={setDeletedTask}
+          editedTask={editedTask}
+          setEditedTask={setEditedTask}
+        />
+      );
+    });
 
   // map through completed tasks
-  const listCompletedItems = allCompletedTasks.sort((a,b) => a.id - b.id).map((task) => {
-    return (
-      <EachTask
-        key={task.id}
-        date={task.date}
-        id={task.id}
-        priority={task.high_priority}
-        type={task.type}
-        name={task.name}
-        description={task.description}
-        status={task.status}
-        className="table-row"
-        setDeletedTask={setDeletedTask}
-        editedTask={editedTask}
-        setEditedTask={setEditedTask}
-      />
-    );
-  });
+  const listCompletedItems = allCompletedTasks
+    .sort((a, b) => a.id - b.id)
+    .map((task) => {
+      return (
+        <EachTask
+          key={task.id}
+          date={task.date}
+          id={task.id}
+          priority={task.high_priority}
+          type={task.type}
+          name={task.name}
+          description={task.description}
+          status={task.status}
+          className="table-row"
+          setDeletedTask={setDeletedTask}
+          editedTask={editedTask}
+          setEditedTask={setEditedTask}
+        />
+      );
+    });
   return (
     <div className="main-container">
       <NavBar />
@@ -127,6 +133,7 @@ export default function Tasks(props) {
         </div>
         <div className="table-container">
           <div className="table-header2">
+            <div>High Priority</div>
             <div>Type</div>
             <div>Date</div>
             <div>Status</div>

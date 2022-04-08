@@ -18,15 +18,17 @@ export default function EachTask(props) {
   const [deleteShow, setDeleteShow] = useState(false);
   const [editShow, setEditShow] = useState(false);
   const [taskPriority, setTaskPriority] = useState(props.priority);
+  const [taskDate, setTaskDate] = useState(props.date);
   const [taskType, setTaskType] = useState(props.type);
   const [taskName, setTaskName] = useState(props.name);
   const [taskDescription, setTaskDescription] = useState(props.description);
   const [taskStatus, setTaskStatus] = useState(props.status);
 
-  console.log(taskPriority)
+  console.log(taskDate);
   // destructure props
   const {
     id,
+    date,
     priority,
     type,
     name,
@@ -42,7 +44,7 @@ export default function EachTask(props) {
   const capitalStatus = status.charAt(0).toUpperCase() + status.slice(1);
   let formattedDate = "";
   if (props.date) {
-    formattedDate = new Date(props.date).toISOString().slice(0, 10);
+    formattedDate = new Date(taskDate).toISOString().slice(0, 10);
   }
 
   // handles popup events, open and close
@@ -87,6 +89,7 @@ export default function EachTask(props) {
     axios
       .post("/task/edit", {
         id,
+        formattedDate,
         taskPriority,
         taskType,
         taskName,
@@ -109,7 +112,7 @@ export default function EachTask(props) {
         <FontAwesomeIcon icon={faFlag} className="table-type" />
       )}
       {priority === false && (
-        <FontAwesomeIcon icon={faFlag} className="table-type2" />
+        <div></div>
       )}
       <div>
         {type === "general" && <FontAwesomeIcon icon={faTasks} />}
@@ -173,7 +176,18 @@ export default function EachTask(props) {
         <Modal.Body>Edit your task below:</Modal.Body>
         <Form className="add-task-form" onSubmit={handleEdit}>
           <Form.Group className="mb-3" controlId="taskName">
-            <Form.Label>Enter Name</Form.Label>
+            <Form.Label>Enter Date:</Form.Label>
+            <Form.Control
+              type="date"
+              name="task-date"
+              placeholder={taskDate}
+              value={formattedDate}
+              onChange={(event) => setTaskDate(event.target.value)}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="taskName">
+            <Form.Label>Enter Name:</Form.Label>
             <Form.Control
               type="text"
               name="task-name"
@@ -184,7 +198,7 @@ export default function EachTask(props) {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="taskDetail">
-            <Form.Label>Enter Details</Form.Label>
+            <Form.Label>Enter Details:</Form.Label>
             <Form.Control
               as="textarea"
               name="task-detail"

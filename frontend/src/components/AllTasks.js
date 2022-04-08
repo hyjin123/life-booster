@@ -27,6 +27,7 @@ export default function AllTasks(props) {
     return (
       <EachTask
         key={task.id}
+        date={task.date}
         id={task.id}
         priority={task.high_priority}
         type={task.type}
@@ -46,6 +47,7 @@ export default function AllTasks(props) {
     return (
       <EachTask
         key={task.id}
+        date={task.date}
         id={task.id}
         priority={task.high_priority}
         type={task.type}
@@ -65,6 +67,7 @@ export default function AllTasks(props) {
     return (
       <EachTask
         key={task.id}
+        date={task.date}
         id={task.id}
         priority={task.high_priority}
         type={task.type}
@@ -84,6 +87,7 @@ export default function AllTasks(props) {
     return (
       <EachTask
         key={task.id}
+        date={task.date}
         id={task.id}
         priority={task.high_priority}
         type={task.type}
