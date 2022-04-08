@@ -6,17 +6,17 @@
 
 .table-header {
   display: grid;
-  grid-template-columns: 1.5fr 2fr 2fr 2fr 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr 2fr 2fr 2fr 1fr 1fr;
 }
 
 .table-header2 {
   display: grid;
-  grid-template-columns: 2fr 1.5fr 2fr 2fr 2fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr 1.5fr 2fr 2fr 2fr 1fr 1fr;
 }
 
 .table-row {
   display: grid;
-  grid-template-columns: 1.5fr 2fr 2fr 2fr 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr 2fr 2fr 2fr 1fr 1fr;
   border: 1px solid rgba(163, 163, 163, 1);
   padding: 10px;
   border-radius: 10px;
@@ -25,7 +25,7 @@
 
 .table-row2 {
   display: grid;
-  grid-template-columns: 2fr 1.5fr 2fr 2fr 2fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr 1.5fr 2fr 2fr 2fr 1fr 1fr;
   border: 1px solid rgba(163, 163, 163, 1);
   padding: 10px;
   border-radius: 10px;
@@ -74,7 +74,11 @@
 
 
 .table-type {
-  padding-left: 40px;
+  padding-left: 20px;
+}
+
+.priority-flag {
+  margin-right: 0px;
 }
 
 .table-status {

@@ -10,6 +10,7 @@ import {
   faUser,
   faBriefcase,
   faTasks,
+  faFlag,
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function EachTask(props) {
@@ -97,7 +98,10 @@ export default function EachTask(props) {
   };
 
   return (
-    <div className={`${props.date && "table-row2"} ${!props.date && "table-row"}`}>
+    <div
+      className={`${props.date && "table-row2"} ${!props.date && "table-row"}`}
+    >
+      <FontAwesomeIcon icon={faFlag} className="priority-flag" />
       <div className="table-type">
         {type === "general" && <FontAwesomeIcon icon={faTasks} />}
         {type === "errand" && <FontAwesomeIcon icon={faShoppingCart} />}
