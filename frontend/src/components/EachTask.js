@@ -25,6 +25,7 @@ export default function EachTask(props) {
   // destructure props
   const {
     id,
+    priority,
     type,
     name,
     description,
@@ -101,8 +102,13 @@ export default function EachTask(props) {
     <div
       className={`${props.date && "table-row2"} ${!props.date && "table-row"}`}
     >
-      <FontAwesomeIcon icon={faFlag} className="priority-flag" />
-      <div className="table-type">
+      {priority === true && (
+        <FontAwesomeIcon icon={faFlag} className="table-type" />
+      )}
+      {priority === false && (
+        <FontAwesomeIcon icon={faFlag} className="table-type2" />
+      )}
+      <div>
         {type === "general" && <FontAwesomeIcon icon={faTasks} />}
         {type === "errand" && <FontAwesomeIcon icon={faShoppingCart} />}
         {type === "household-chore" && <FontAwesomeIcon icon={faHome} />}

@@ -28,6 +28,7 @@ export default function AllTasks(props) {
       <EachTask
         key={task.id}
         id={task.id}
+        priority={task.high_priority}
         type={task.type}
         name={task.name}
         description={task.description}
@@ -134,7 +135,7 @@ export default function AllTasks(props) {
     <div className="table-container">
       <div className="table-header">
         <div>High Priority</div>
-        <div className="table-type">Type</div>
+        <div>Type</div>
         <div>Status</div>
         <div>Name</div>
         <div>Details</div>

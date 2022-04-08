@@ -74,11 +74,12 @@
 
 
 .table-type {
-  padding-left: 20px;
+  margin-left: 20px;
+  color: #d61609;
 }
 
-.priority-flag {
-  margin-right: 0px;
+.table-type2 {
+  margin-left: 20px;
 }
 
 .table-status {
