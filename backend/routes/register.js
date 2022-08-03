@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken");
 module.exports = (db) => {
   router.post("/", function (req, res) {
     const { first_name, last_name, email } = req.body;
+    console.log(req.body);
     // hash the password before storing into db
     const password = bcrypt.hashSync(req.body.password, 10);
     // check if the email already exists in the database
@@ -38,7 +39,7 @@ module.exports = (db) => {
             const user = { id, first_name, last_name, email };
             // save access token
             const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET);
-            res.json({ accessToken, user});
+            res.json({ accessToken, user });
           })
           .catch((err) => {
             res.status(500).json({ error: err.message });
