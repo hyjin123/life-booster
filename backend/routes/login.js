@@ -1,17 +1,20 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 module.exports = (db) => {
-  router.post('/', function(req, res) { 
+  router.post("/", function (req, res) {
     // save login information to variables
     const email = req.body.email;
     const passwordInput = req.body.password;
     // make a query to compare if email or password is valid
-    db.query(`SELECT id, first_name, last_name, email, password FROM users WHERE email = $1`, [email])
-      .then(data => {
+    db.query(
+      `SELECT id, first_name, last_name, email, password FROM users WHERE email = $1`,
+      [email]
+    )
+      .then((data) => {
         console.log(data.rows[0]);
         const id = data.rows[0].id;
         const first_name = data.rows[0].first_name;
@@ -30,8 +33,8 @@ module.exports = (db) => {
           res.status(400).send({ message: "Invalid password" });
         }
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   });
 
   return router;
-}
+};
