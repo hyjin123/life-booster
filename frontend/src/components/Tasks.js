@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import Banner from "./Banner";
 import { useNavigate, useParams } from "react-router";
-import axios from "axios";
+import axios from "../../axios";
 import EachTask from "./EachTask";
 
 export default function Tasks(props) {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./AllTasks.css";
-import axios from "axios";
+import axios from "../../axios";
 import EachTask from "./EachTask";
 
 export default function AllTasks(props) {

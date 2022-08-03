@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, FloatingLabel } from "react-bootstrap";
-import axios from "axios";
+import axios from "../../axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -111,9 +111,7 @@ export default function EachTask(props) {
       {priority === true && (
         <FontAwesomeIcon icon={faFlag} className="table-type" />
       )}
-      {priority === false && (
-        <div></div>
-      )}
+      {priority === false && <div></div>}
       <div>
         {type === "general" && <FontAwesomeIcon icon={faTasks} />}
         {type === "errand" && <FontAwesomeIcon icon={faShoppingCart} />}

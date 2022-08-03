@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../axios";
 import { React, useState } from "react";
 import {
   Tabs,
@@ -60,7 +60,7 @@ export default function List(props) {
   const handleClick = () => {
     setListOn(false);
   };
-    
+
   return (
     <div className="task-container">
       <h2>
@@ -68,10 +68,14 @@ export default function List(props) {
         {weekdays[date.getDay()]}
       </h2>
       <h3>
-        <button className="main-button" onClick={handleClick}>Go Back to the Calendar</button>
+        <button className="main-button" onClick={handleClick}>
+          Go Back to the Calendar
+        </button>
       </h3>
       <h3>
-        <button className="main-button" onClick={handleShow}>Add a Task</button>
+        <button className="main-button" onClick={handleShow}>
+          Add a Task
+        </button>
       </h3>
       <Tabs
         id="controlled-tab-example"
