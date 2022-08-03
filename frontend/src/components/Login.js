@@ -1,7 +1,7 @@
 import NavBar from "./NavBar";
 import { Form, Button } from "react-bootstrap";
 import "./Register.css";
-import axios from "../../axios";
+import axios from "../axios";
 
 function Login(props) {
   const handleLogin = (event) => {

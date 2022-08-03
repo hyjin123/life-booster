@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import DateCalendar from "./DateCalendar";
 import "./MainPage.css";
-import axios from "../../axios";
+import axios from "../axios";
 import Banner from "./Banner";
 import List from "./List";
 

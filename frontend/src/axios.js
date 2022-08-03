@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // used in production
-const api = axios.create({
+const axios = axios.create({
   baseURL: "https://life-booster.herokuapp.com/",
   headers: {
     "Content-Type": "application/json",
@@ -17,4 +17,4 @@ const api = axios.create({
 //   baseURL: "http://localhost:3002",
 // });
 
-export default api;
+export default axios;
