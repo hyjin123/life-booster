@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // used in production
-const axios = axios.create({
+const api = axios.create({
   baseURL: "https://life-booster.netlify.app/",
   headers: {
     "Content-Type": "application/json",
@@ -17,4 +17,4 @@ const axios = axios.create({
 //   baseURL: "http://localhost:3002",
 // });
 
-export default axios;
+export default api;

@@ -2,6 +2,7 @@ import NavBar from "./NavBar";
 import { Form, Button } from "react-bootstrap";
 import "./Register.css";
 import axios from "axios";
+import api from "../../axios";
 
 function Register(props) {
   const onSubmit = (event) => {
@@ -13,7 +14,7 @@ function Register(props) {
     const email = formData.get("email");
     const password = formData.get("password");
     // make an axios request to the backend to save the register data to the db
-    axios
+    api
       .post("/register", {
         first_name: firstName,
         last_name: lastName,
