@@ -1,7 +1,7 @@
 import NavBar from "./NavBar";
-import axios from "../../axios";
 import { Form, Button } from "react-bootstrap";
 import "./Register.css";
+import axios from "axios";
 
 function Register(props) {
   const onSubmit = (event) => {
