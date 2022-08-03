@@ -1,13 +1,13 @@
 import NavBar from "./NavBar";
 import { Form, Button } from "react-bootstrap";
 import "./Register.css";
-import axios from "../axios";
+import api from "../axios";
 
 function Login(props) {
   const handleLogin = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    axios
+    api
       .post("/login", {
         email: formData.get("email"),
         password: formData.get("password"),
@@ -23,7 +23,6 @@ function Login(props) {
       .catch((err) => console.log(err));
   };
 
-  console.log(props.userId);
   return (
     <div className="register-container">
       <NavBar userId={props.userId} />

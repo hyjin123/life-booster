@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal, Button, Form, FloatingLabel } from "react-bootstrap";
-import axios from "../axios";
+import api from "../axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
@@ -69,7 +69,7 @@ export default function EachTask(props) {
     // close the popup
     setDeleteShow(false);
     // make a post axios request to remove the selected (1) task from the database, send the task id as a body
-    axios
+    api
       .post("/task/delete", {
         id,
       })
@@ -86,7 +86,7 @@ export default function EachTask(props) {
     // close the popup
     setEditShow(false);
     // make a post axios request
-    axios
+    api
       .post("/task/edit", {
         id,
         formattedDate,

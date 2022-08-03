@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import Banner from "./Banner";
 import { useNavigate, useParams } from "react-router";
-import axios from "../axios";
+import api from "../axios";
 import EachTask from "./EachTask";
 
 export default function Tasks(props) {
@@ -31,17 +31,17 @@ export default function Tasks(props) {
   // make 4 backend requests to retrive all, uncompleted, in-progress, and completed tasks
   useEffect(() => {
     Promise.all([
-      axios.get("/task/uncompleted/all", {
+      api.get("/task/uncompleted/all", {
         params: {
           userId: userId,
         },
       }),
-      axios.get("/task/in-progress/all", {
+      api.get("/task/in-progress/all", {
         params: {
           userId: userId,
         },
       }),
-      axios.get("/task/completed/all", {
+      api.get("/task/completed/all", {
         params: {
           userId: userId,
         },

@@ -1,4 +1,4 @@
-import axios from "../axios";
+import api from "../axios";
 import { React, useState } from "react";
 import {
   Tabs,
@@ -35,7 +35,7 @@ export default function List(props) {
   const handleAdd = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    axios
+    api
       .post("/task/add", {
         userId: props.userId,
         date: props.date,

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./AllTasks.css";
-import axios from "../axios";
+import api from "../axios";
 import EachTask from "./EachTask";
 
 export default function AllTasks(props) {
@@ -113,25 +113,25 @@ export default function AllTasks(props) {
   // make 4 backend requests to retrive all, uncompleted, in-progress, and completed tasks
   useEffect(() => {
     Promise.all([
-      axios.get("/task/all", {
+      api.get("/task/all", {
         params: {
           date: date,
           userId: userId,
         },
       }),
-      axios.get("/task/uncompleted", {
+      api.get("/task/uncompleted", {
         params: {
           date: date,
           userId: userId,
         },
       }),
-      axios.get("/task/in-progress", {
+      api.get("/task/in-progress", {
         params: {
           date: date,
           userId: userId,
         },
       }),
-      axios.get("/task/completed", {
+      api.get("/task/completed", {
         params: {
           date: date,
           userId: userId,
