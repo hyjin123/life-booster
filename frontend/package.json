@@ -48,5 +48,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://life-booster.herokuapp.com/"
+  "proxy": "https://localhost:3001/"
 }
