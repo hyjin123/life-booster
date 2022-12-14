@@ -2,48 +2,39 @@
 
 ## Description
 
-Life-Booster is a full-stack application that aims to connect friends and family. It provides a way for the users to interact each other in real time all while providing an excellent and stunning UI/UX.
+Life-Booster is a full-stack application that allows users to create a to-do list for each day whether it would be today or tuesday next week. It provides an efficient way for the users to organize their day to day allowing them to be more productive.
 
 ## Features
 
 - Users can register and log in using their email.
-- Users can view a calendar on the main page
-- Users
-- Users can favourite and block a friend. If blocked, they cannot message each other until unblocked.
-- Users can chat with their friends in real time. They can see if they have sent new messages in the home page and they can also see when a friend has been last active.
-- Users can see all their contacts including their status and their profile picture. They can also see which friend has been favourited and/or blocked.
-- Users can delete a chat from their view.
-- Users can set their status, change their profile picture, and set their own theme (5 different colour theme for the app) in the settings page.
+- Users can view a full calendar on the main page.
+- Users can choose a date and view the to-do list for that specific day.
+- Users can see all, uncompleted, in-progress, and completed tasks for that day.
+- Users can add tasks.
+- Users can edit tasks such as the date, details, and status (eg. uncompleted to completed).
+- Users can delete tasks.
+- Users can mark a task as high priority.
+- Users can see all tasks based on their status (not just for 1 specific day but for all days).
 
 ## The App
 
-### Get Started Page
-
-!["Get Started Page"](https://github.com/hyjin123/talkr/blob/master/docs/Start.PNG?raw=true)
-
-### Register and Log-In Page
-
-Users can register and set their profile picture from the camera roll. They can also log in with their existing account.
-
-!["Register and Log-In Page"](https://github.com/hyjin123/talkr/blob/master/docs/Register1.PNG?raw=true)
-
 ### Home Page
 
-Shows all your chats with your friends.
+Full caldendar to choose your day
 
 !["Home Page"](https://github.com/hyjin123/talkr/blob/master/docs/Home-Screen.PNG?raw=true)
 
-### Contacts Page
+### Tasks Page
 
 You can see all your friends in one page, it will list useful information such as your favourites and blocked users
 
 !["Contacts Page"](https://github.com/hyjin123/talkr/blob/master/docs/Contacts2.PNG?raw=true)
 
-### Friend Screen
+### Edit and delete tasks
 
-You can view your friend's profile, you can also favourite a user.
+You can edit and delete tasks.
 
-!["Favourite"](https://github.com/hyjin123/talkr/blob/master/docs/Friend.PNG?raw=true)
+!["edit"](https://github.com/hyjin123/life-booster/blob/master/frontend/docs/Edit.png?raw=true)
 
 ## Getting Started
 
@@ -59,7 +50,7 @@ You can view your friend's profile, you can also favourite a user.
 
 - React JS
 - JSON Web Token
-- Bootstrap
+- Bootstrap CSS
 
 **Back-End**
 
