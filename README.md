@@ -20,15 +20,21 @@ Life-Booster is a full-stack application that allows users to create a to-do lis
 
 ### Home Page
 
-Full caldendar to choose your day
+Users can view a caldenar and choose which day they would like to create a to-do list.
 
-!["Home Page"](https://github.com/hyjin123/talkr/blob/master/docs/Home-Screen.PNG?raw=true)
+!["Home Page"](https://github.com/hyjin123/life-booster/blob/master/frontend/docs/Home.png?raw=true)
 
-### Tasks Page
+### Add tasks
 
-You can see all your friends in one page, it will list useful information such as your favourites and blocked users
+Users can add tasks for each day.
 
-!["Contacts Page"](https://github.com/hyjin123/talkr/blob/master/docs/Contacts2.PNG?raw=true)
+!["Add"](https://github.com/hyjin123/life-booster/blob/master/frontend/docs/add-task.png?raw=true)
+
+### View tasks
+
+Users can view all tasks or tasks based on status for each day.
+
+!["View all task"](https://github.com/hyjin123/life-booster/blob/master/frontend/docs/all-task.png?raw=true)
 
 ### Edit and delete tasks
 
@@ -36,20 +42,27 @@ You can edit and delete tasks.
 
 !["edit"](https://github.com/hyjin123/life-booster/blob/master/frontend/docs/Edit.png?raw=true)
 
+### View tasks for all days
+
+Users can view tasks based on status for all days (not just each day)
+
+!["View tasks based on status"](https://github.com/hyjin123/life-booster/blob/master/frontend/docs/completed-task.png?raw=true)
+
 ## Getting Started
 
 1. Fork this repository, then clone your fork of this repository.
-2. Install dependencies using the `npm install` command.
-3. Download the Expo App on your device.
-4. Start the application using the `expo start` command.
-5. Scan the QR code on your device, this will start the application.
+2. Install dependencies using the npm install in the frontend directory and backend directory.
+3. Start postgresql using psql.
+4. Create a database in your host machine called "life-booster" with user "labber" and password "labber" on port 5432
+5. Seed the database in the backend directory with npm run db:reset and npm run seed.
+6. Start the web server using the npm start command in the frontend directory. The app will be served at http://localhost:3000/.
+7. Start the backend server using the npm run dev command in the backend directory. The app will be served at http://localhost:3001/.
 
 ## Stack Choices
 
 **Front-End**
 
 - React JS
-- JSON Web Token
 - Bootstrap CSS
 
 **Back-End**
@@ -57,3 +70,4 @@ You can edit and delete tasks.
 - Node JS
 - Express
 - PostgresSQL
+- JSON Web Token
